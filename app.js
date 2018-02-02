@@ -30,7 +30,7 @@ var server = http.createServer(function(request, response) {
     {
         console.log(request.url)
         fs.readFile("./" + request.url, 'utf-8', function (error, data) {
-            response.writeHead(200, {'Content-Type': 'image/jpg'});
+            response.writeHead(200, {'Content-Type': 'image/png'});
             response.write(data);
             response.end();
         });
