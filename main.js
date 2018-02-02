@@ -1,6 +1,7 @@
 function game_model(obj)
 {
 	obj.joined = ko.observable(false);
+	obj.server_rooms = ko.observableArray();
 
     socket.on("room_test", function(data) {
         // self.get_all_characters_success(data)
@@ -22,6 +23,6 @@ function game_model(obj)
 
     socket.emit("get_rooms");
     socket.on("return_rooms", function(data) {
-        console.log(data);
+        obj.server_rooms(data)
     })
 }
