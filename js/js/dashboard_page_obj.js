@@ -6,7 +6,7 @@ function dashboard_viewModel()
     self.username = ko.observable("");
     self.joined = ko.observable(false);
 
-    socket.on("get_all_characters", function(data) {
+    socket.on("room_test", function(data) {
         // self.get_all_characters_success(data)
         console.log(data);
     })
