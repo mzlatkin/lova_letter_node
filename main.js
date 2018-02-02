@@ -1,5 +1,6 @@
 function game_model(obj)
 {
+	
 	obj.player_number = ko.observable(4);
 
 	obj.holding_card = ko.observable();
@@ -97,7 +98,7 @@ function game_model(obj)
 
 
 
-	var joined = ko.observable(false);
+	obj.joined = ko.observable(false);
 
     socket.on("room_test", function(data) {
         // self.get_all_characters_success(data)
@@ -124,5 +125,5 @@ function game_model(obj)
     {
         socket.emit("test_room", "room1");
     }
-    
+
 }
