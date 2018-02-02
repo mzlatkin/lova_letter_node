@@ -12,6 +12,7 @@ function game_model(obj)
 	obj.build_card_deck = function()
 	{
 		var cards_json = ajax_get_cards();
+		console.log(cards_json);
 		
 		for (var i = 0; i < cards_json["cards"].length; i++) {
 			obj.cards.push(new player_model(cards_json["cards"][i]));
