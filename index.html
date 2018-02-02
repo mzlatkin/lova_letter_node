@@ -55,6 +55,12 @@
                         <form class="form-inline">
                             <input type="button" value="Draw card" class="btn btn-primary" data-bind="click: draw_card">
                         </form>
+                        <div>
+                            <span>card in hand:</span>
+                            <p>
+                                <img data-dismiss="modal" data-bind="attr: { src: card_in_hand().img }, click: function(){$parent.keep_picked_up_card()}" ></img>
+                            </p>
+                        </div>
                     </div>
                 <!-- /ko -->
             </div>
