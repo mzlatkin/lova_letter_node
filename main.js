@@ -4,7 +4,9 @@ function game_model(obj)
 	obj.server_rooms = ko.observableArray();
 	obj.current_room_name = ko.observable();
 
-    socket.on("room_test", function(data) {
+	obj.your_turn = ko.observable(false);
+
+    socket.on("game_update", function(data) {
         // self.get_all_characters_success(data)
         console.log(data);
     })
@@ -16,9 +18,10 @@ function game_model(obj)
         obj.joined(true);
     }
 
-    self.test_room_1 = function(name)
+    self.end_turn = function(name)
     {
-        socket.emit("test_room", obj.current_room_name());
+    	console.log("you ended your turn");
+        socket.emit("end_turn", obj.current_room_name());
     }
 
     socket.emit("get_rooms");

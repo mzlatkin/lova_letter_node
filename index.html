@@ -47,8 +47,9 @@
                 <!-- /ko -->
                 <!-- ko if: joined() -->
                     <div class="col-xs-12">
+                        <span>your turn:</span><span data-bind="text:your_turn"></span>
                         <form class="form-inline">
-                            <input type="button" value="test room 1" class="btn btn-primary" data-bind="click: test_room_1">
+                            <input type="button" value="End turn" class="btn btn-primary" data-bind="click: end_turn">
                         </form>
                     </div>
                 <!-- /ko -->
