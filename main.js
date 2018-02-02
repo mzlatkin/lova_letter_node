@@ -44,9 +44,9 @@ console.log("listening on 8080");
 
 socket.on("connection", function (client) {  
     
-    client.on("join", function(name){
-        socket.join(name);
-        console.log("joined room" + name)
+    client.on("join_room", function(room){
+        socket.join(room);
+        console.log("joined room" + room)
         // people[client.id] = name;
         // client.emit("get_all_characters", characters);
         // console.log("someone joined");
