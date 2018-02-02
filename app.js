@@ -5,7 +5,7 @@ var io = require('socket.io')(http);
 var request = require('request');
 var index;  
 
-var rooms = [{"name":"room 1","people":[]}]
+var SERVER_ROOMS = [{"name":"room 1","people":[]}]
 
 var server = http.createServer(function(request, response) {
     if (request.url.indexOf('.js') != -1)
@@ -46,8 +46,7 @@ console.log("listening on 8080");
 socket.on("connection", function (client) {  
 
     client.on("get_rooms", function(){
-        client.join(room);
-        client.emit("return_rooms",rooms);
+        client.emit("return_rooms",SERVER_ROOMS);
     });
 
     client.on("join_room", function(room){
