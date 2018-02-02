@@ -61,7 +61,7 @@ socket.on("connection", function (client) {
             if (SERVER_ROOMS[i]["name"] == room)
             {
                 SERVER_ROOMS[i]["turn"] = SERVER_ROOMS[i]["turn"]+1
-                if(SERVER_ROOMS[i]["turn"] > SERVER_ROOMS[i]["people"].length-1)
+                if(SERVER_ROOMS[i]["turn"] > SERVER_ROOMS[i]["people"].length)
                 {
                     SERVER_ROOMS[i]["turn"] = 1
                 }
