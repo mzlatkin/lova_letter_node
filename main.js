@@ -1,5 +1,6 @@
 var people = {};
-var http = require('http');
+var app = require('express')();
+var http = require('http').Server(app);
 var fs = require('fs');
 var io = require('socket.io')(http);  
 var request = require('request');
