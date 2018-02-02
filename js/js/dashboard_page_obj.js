@@ -21,6 +21,26 @@ function dashboard_viewModel()
         }
     }
 
+    self.join_room_1 = function(name)
+    {
+        console.log("joined_room_1")
+        if (name != "") {
+            socket.emit("join_room", "room1");
+            ready = true;
+            self.joined(true);
+        }
+    }
+
+    self.join_room_2 = function(name)
+    {
+        console.log("joined_room_2")
+        if (name != "") {
+            socket.emit("join_room", "room2");
+            ready = true;
+            self.joined(true);
+        }
+    }
+
     self.select_character = function(character)
     {
         for (var i = 0, i_len = self.characters().length; i < i_len; ++i)
