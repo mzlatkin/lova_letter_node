@@ -24,14 +24,16 @@ function game_model(obj)
         }
     })
 
-    self.join_room = function(room)
+    obj.join_room = function(room)
     {
         socket.emit("join_room", room["name"]);
         obj.current_room_name(room["name"]);
         obj.joined(true);
     }
 
-    self.end_turn = function(name)
+
+
+    obj.end_turn = function(name)
     {
     	console.log("you ended your turn");
         socket.emit("end_turn", obj.current_room_name());
