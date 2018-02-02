@@ -45,14 +45,16 @@ socket.on("connection", function (client) {
 
     client.on("join_room", function(room){
         client.join(room);
+        server_room = 
         for (var i = 0; i <= SERVER_ROOMS.length; i++) {
             if (SERVER_ROOMS[i]["name"] == room)
             {
-                player_to_add = "player "+SERVER_ROOMS[i]["people"].length+1
-                SERVER_ROOMS[i]["people"].push(player_to_add); 
-                socket.in(room).emit("game_update", player_to_add + " has joined the room");  
+                server_room =SERVER_ROOMS[i]
             }
         };
+        player_to_add = "player "+server_room[i]["people"].length
+        server_room[i]["people"].push(player_to_add); 
+        socket.in(room).emit("game_update", player_to_add + " has joined the room");  
         
     });
 
