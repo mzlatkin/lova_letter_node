@@ -27,8 +27,8 @@ function game_model(obj)
         }
     })
 
-    socket.on("client_update", function(data))
-    {
+    socket.on("client_update", function(data)){
+    	console.log("updated client");
 
     }
 
