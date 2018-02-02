@@ -8,18 +8,8 @@ function dashboard_viewModel()
 
     socket.on("get_all_characters", function(data) {
         // self.get_all_characters_success(data)
-        console.log("called socket");
+        console.log(data);
     })
-
-    self.join = function(name)
-    {
-        console.log("clicked join")
-        if (name != "") {
-            socket.emit("join", name);
-            ready = true;
-            self.joined(true);
-        }
-    }
 
     self.join_room_1 = function(name)
     {

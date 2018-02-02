@@ -45,10 +45,17 @@ console.log("listening on 8080");
 socket.on("connection", function (client) {  
     
     client.on("join", function(name){
-        people[client.id] = name;
-        client.emit("get_all_characters", characters);
-        console.log("someone joined");
+        socket.join(name);
+        console.log("joined room" + name)
+        // people[client.id] = name;
+        // client.emit("get_all_characters", characters);
+        // console.log("someone joined");
+        socket.in(room).client.emit("room_test", "you are in room" + room);
     });
+
+    client.on("test_room", function(room){
+        socket.in(room).client.emit("you are in room" + room);
+    }
 
     // client.on("get_character_details", function(pk){
     //     request('http://192.168.0.23:8000/character_detail/get_details_by_character/?character='+pk, function (error, response, body) {
