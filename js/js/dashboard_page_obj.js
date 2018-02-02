@@ -13,6 +13,7 @@ function dashboard_viewModel()
 
     self.join = function(name)
     {
+        console.log("clicked join")
         if (name != "") {
             socket.emit("join", name);
             ready = true;
