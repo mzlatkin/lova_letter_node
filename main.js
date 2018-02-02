@@ -47,14 +47,10 @@ socket.on("connection", function (client) {
     client.on("join_room", function(room){
         client.join(room);
         console.log("joined room" + room)
-        // people[client.id] = name;
-        // client.emit("get_all_characters", characters);
-        // console.log("someone joined");
-        socket.in(room).client.emit("room_test", "you are in room" + room);
     });
 
     client.on("test_room", function(room){
-        socket.in(room).client.emit("you are in room" + room);
+        socket.in(room).client.emit("room_test", "you are in room" + room);
     });
 
     // client.on("get_character_details", function(pk){
