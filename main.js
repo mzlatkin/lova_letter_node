@@ -11,8 +11,8 @@ function game_model(obj)
     self.join_room = function(name)
     {
         console.log("joined_room_1")
-        socket.emit("join_room", name);
-        ready = true;
+        console.log(name)
+        // socket.emit("join_room", name);
         obj.joined(true);
     }
 
