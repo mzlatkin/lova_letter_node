@@ -55,7 +55,7 @@ socket.on("connection", function (client) {
 
     client.on("test_room", function(room){
         socket.in(room).client.emit("you are in room" + room);
-    }
+    });
 
     // client.on("get_character_details", function(pk){
     //     request('http://192.168.0.23:8000/character_detail/get_details_by_character/?character='+pk, function (error, response, body) {
