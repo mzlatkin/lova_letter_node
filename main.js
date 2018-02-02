@@ -25,12 +25,12 @@ function game_model(obj)
         {
         	obj.your_turn(false);
         }
-    })
+    });
 
-    socket.on("client_update", function(data)){
+    socket.on("client_update", function(data){
     	console.log("updated client");
 
-    }
+    });
 
     self.join_room = function(room)
     {
