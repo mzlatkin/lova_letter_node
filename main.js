@@ -104,18 +104,10 @@ function game_model(obj)
         console.log(data);
     })
 
-    self.join_room_1 = function(name)
+    self.join_room = function(name)
     {
         console.log("joined_room_1")
-        socket.emit("join_room", "room1");
-        ready = true;
-        obj.joined(true);
-    }
-
-    self.join_room_2 = function(name)
-    {
-        console.log("joined_room_2")
-        socket.emit("join_room", "room2");
+        socket.emit("join_room", name);
         ready = true;
         obj.joined(true);
     }
@@ -125,6 +117,8 @@ function game_model(obj)
         socket.emit("test_room", "room1");
     }
 
-
-
+    socket.emit("get_rooms");
+    socket.on("return_rooms", function(data) {
+        console.log(data);
+    })
 }
