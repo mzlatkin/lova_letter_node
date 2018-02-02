@@ -5,7 +5,7 @@ var io = require('socket.io')(http);
 var request = require('request');
 var index;  
 
-var SERVER_ROOMS = [{"name":"room 1","people":[],"current_cards":[]}]
+var SERVER_ROOMS = [{"name":"room 1","people":[],"current_cards":[],"turn":0}]
 
 var server = http.createServer(function(request, response) {
     if (request.url.indexOf('.js') != -1)
@@ -50,7 +50,7 @@ socket.on("connection", function (client) {
             {
                 player_to_add = "player "+SERVER_ROOMS[i]["people"].length
                 SERVER_ROOMS[i]["people"].push(player_to_add); 
-                socket.in(room).emit("game_update", player_to_add + " has joined the room");  
+                socket.in(room).emit("game_update", SERVER_ROOMS[i]);  
             }
         };
         
