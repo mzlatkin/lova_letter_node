@@ -10,7 +10,7 @@ function build_game_viewModel()
 
     game_model(self);
 
-    var joined = ko.observable(false);
+    obj.joined = ko.observable(false);
 
     socket.on("room_test", function(data) {
         // self.get_all_characters_success(data)
