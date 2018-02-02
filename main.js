@@ -34,7 +34,7 @@ var server = http.createServer(function(request, response) {
 }).listen(8080);
 
 var socket = io.listen(server);
-
+console.log("listening on 8080");
 // request('http://192.168.0.23:8000/character/', function (error, response, body) {
 //   if (!error && response.statusCode == 200) {
 //     characters = body  
