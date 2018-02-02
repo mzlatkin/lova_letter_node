@@ -26,16 +26,22 @@ $.ajaxSetup({
 
 function ajax_get_player_template()
 {
-    var ret = undefined;
-    $.ajax({
-        url: "assets/models/template.JSON"+'?ts='+new Date().getTime(),
-        dataType: "json",
-        async: false,
-        success: function (data, status, xhr) {
-            ret = data;
-        }
-    });
+    var ret = {
+        "name": "",
+        "card_in_hand": "",
+        "picked_up_card": "",
+        "discard_array": []
+    };
+    // $.ajax({
+    //     url: "assets/models/template.JSON"+'?ts='+new Date().getTime(),
+    //     dataType: "json",
+    //     async: false,
+    //     success: function (data, status, xhr) {
+    //         ret = data;
+    //     }
+    // });
     return ret;
+    
 }
 
 function ajax_get_cards()
