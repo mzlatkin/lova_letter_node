@@ -7,7 +7,7 @@ function game_model(obj)
 	obj.your_turn = ko.observable(false);
 	obj.player_number = ko.observable("");
 
-	obj.your_card = ko.observable("");
+	obj.card_in_hand = ko.observable("");
 
     socket.on("game_update", function(data) {
         // self.get_all_characters_success(data)
@@ -31,7 +31,7 @@ function game_model(obj)
     	console.log(data);
     	if (data["card"] != undefined)
     	{
-    		obj.your_card(data["card"]);
+    		obj.card_in_hand(data["card"]);
     	}
     });
 
@@ -40,6 +40,7 @@ function game_model(obj)
         socket.emit("join_room", room["name"]);
         obj.current_room_name(room["name"]);
         obj.joined(true);
+        self.draw_card()
     }
 
     self.draw_card = function()
