@@ -1,126 +1,96 @@
-var people = {};
-var http = require('http');
-var fs = require('fs');
-var io = require('socket.io')(http);  
-var request = require('request');
-var index;  
-var characters = [];
+function game_model(obj)
+{
+	obj.player_number = ko.observable(4);
 
-var server = http.createServer(function(request, response) {
-    if (request.url.indexOf('.js') != -1)
-    {
-        fs.readFile("./" + request.url, 'utf-8', function (error, data) {
-            response.writeHead(200, {'Content-Type': 'text/javascript'});
-            response.write(data);
-            response.end();
-        });
+	obj.holding_card = ko.observable();
+	obj.picked_up_card = ko.observable();
+
+	obj.cards = ko.observableArray();
+	obj.players = ko.observableArray([]);
+	obj.player_turn = ko.observable(0);
+
+	obj.build_card_deck = function()
+	{
+		var cards_json = ajax_get_cards();
+		
+		for (var i = 0; i < cards_json["cards"].length; i++) {
+			obj.cards.push(new player_model(cards_json["cards"][i]));
+		}
+		console.log(obj.cards())
+	}
+	obj.build_card_deck();
+
+
+	obj.add_player = function(){
+	 	if (obj.players().length < 4)
+	 	{
+	        var player_template_json = ajax_get_player_template();
+	        player_template_json["name"] = "Player_"+(obj.players().length+1)
+	        obj.players.push(new player_model(player_template_json));
+    	}
+    	else{
+    		alert("too many players");
+    	}
     }
-    else if (request.url.indexOf('.css') != -1)
-    {
-        fs.readFile("./" + request.url, 'utf-8', function (error, data) {
-            response.writeHead(200, {'Content-Type': 'text/css'});
-            response.write(data);
-            response.end();
-        });
-    }
-    else
-    {
-        fs.readFile("index.html", 'utf-8', function (error, data) {
-            response.writeHead(200, {'Content-Type': 'text/html'});
-            response.write(data);
-            response.end();
-        });
-    }
-}).listen(8080);
 
-var socket = io.listen(server);
-console.log("listening on 8080");
-// request('http://192.168.0.23:8000/character/', function (error, response, body) {
-//   if (!error && response.statusCode == 200) {
-//     characters = body  
-//     console.log(characters);
-//   }
-// })
+	obj.return_random_card = function()
+	{
+		var num = Math.floor(Math.random()*obj.cards().length);
+		var card = obj.cards().splice(num,1);
+		return card[0];
+	}
 
-socket.on("connection", function (client) {  
-    
-    client.on("join_room", function(room){
-        client.join(room);
-        console.log("joined room" + room)
-    });
+	obj.keep_card = function()
+	{
+		obj.holding_card(obj.picked_up_card());
+	}
+	obj.pick_up_card = function()
+	{
+		if (obj.cards().length == 0)
+		{
+			obj.game_over();
+		}
+		obj.players()[obj.player_turn()]["picked_up_card"](obj.return_random_card());
+	}
+	obj.keep_picked_up_card = function()
+	{
+		alert("Player_"+(obj.player_turn()+1)+" played the card: "+ obj.players()[obj.player_turn()]["card_in_hand"]());
+		obj.players()[obj.player_turn()]["card_in_hand"](obj.players()[obj.player_turn()]["picked_up_card"]());
+		obj.end_turn()
+	}
 
-    client.on("test_room", function(room){
-        console.log("recived test_room call")
-        socket.in(room).emit("room_test", "you are in room" + room);
-    });
+	obj.discard_picked_up_card = function()
+	{
+		alert("Player_"+(obj.player_turn()+1)+" played the card: "+ obj.players()[obj.player_turn()]["picked_up_card"]());
+		obj.end_turn()
+	}
+	
 
-    // client.on("get_character_details", function(pk){
-    //     request('http://192.168.0.23:8000/character_detail/get_details_by_character/?character='+pk, function (error, response, body) {
-    //       if (!error && response.statusCode == 200) {
-    //         client.emit("got_character_details"+pk, body);
-    //       }
-    //     })
-    // });
-    // client.on("get_character_skills", function(pk){
-    //     request('http://192.168.0.23:8000/skill_association/get_skill_association_by_character/?character='+pk, function (error, response, body) {
-    //       if (!error && response.statusCode == 200) {
-    //         client.emit("got_character_skills"+pk, body);
-    //       }
-    //     })
-    // });
-    // client.on("get_character_attributes", function(pk){
-    //     request('http://192.168.0.23:8000/attribute_association/get_attribute_association_by_character/?character='+pk, function (error, response, body) {
-    //       if (!error && response.statusCode == 200) {
-    //         client.emit("got_character_attributes"+pk, body);
-    //       }
-    //     })
-    // });
-    // client.on("get_character_items", function(pk){
-    //     request('http://192.168.0.23:8000/item_association/get_item_association_by_character/?character='+pk, function (error, response, body) {
-    //       if (!error && response.statusCode == 200) {
-    //         client.emit("got_character_items"+pk, body);
-    //       }
-    //     })
-    // });
-    // client.on("get_character_weapons", function(pk){
-    //     request('http://192.168.0.23:8000/weapon_association/get_weapon_association_by_character/?character='+pk, function (error, response, body) {
-    //       if (!error && response.statusCode == 200) {
-    //         client.emit("got_character_weapons"+pk, body);
-    //       }
-    //     })
-    // });
-    // client.on("get_character_armor", function(pk){
-    //     request('http://192.168.0.23:8000/armor_association/get_armor_association_by_character/?character='+pk, function (error, response, body) {
-    //       if (!error && response.statusCode == 200) {
-    //         client.emit("got_character_armor"+pk, body);
-    //       }
-    //     })
-    // });
-    // client.on("get_character_spells", function(pk){
-    //     request('http://192.168.0.23:8000/spell_association/get_spell_association_by_character/?character='+pk, function (error, response, body) {
-    //       if (!error && response.statusCode == 200) {
-    //         client.emit("got_character_spells"+pk, body);
-    //       }
-    //     })
-    // });
-    // client.on("get_character_feats", function(pk){
-    //     request('http://192.168.0.23:8000/feat_association/get_feat_association_by_character/?character='+pk, function (error, response, body) {
-    //       if (!error && response.statusCode == 200) {
-    //         client.emit("got_character_feats"+pk, body);
-    //       }
-    //     })
-    // });
-    // client.on("post_weapon_equip", function(pk,equipped){
+	obj.reset_game = function()
+	{
+		obj.cards([1,1,1,1,1,2,2,3,3,4,4,5,5,6,7,8]);
+	}
+	obj.start_game = function()
+	{
+		for (var i = 0; i < obj.players().length; i++) {
+			obj.players()[i]["card_in_hand"](obj.return_random_card());
+		};
+		console.log(obj.players()[obj.player_turn()]["card_in_hand"]()["value"]())
+		console.log(obj.players()[obj.player_turn()]["card_in_hand"]())
 
-    //     request({
-    //         url: 'http://192.168.0.23:8000/weapon_association/'+pk+'/',
-    //         method: "PATCH",
-    //         json: true,   // <--Very important!!!
-    //         body: {'equipped': equipped}
-    //     }, function (error, response, body){
-    //         console.log(body['pk']);
-    //         socket.sockets.emit("update_equiped"+body['pk'], body);
-    //     });
-    // });
-
-});
+	}
+	obj.end_turn = function()
+	{
+		obj.players()[obj.player_turn()]["picked_up_card"]("");
+		obj.player_turn(obj.player_turn()+1);
+		if (obj.player_turn() == obj.players().length)
+		{
+			obj.player_turn(0);
+		}
+	}
+	obj.game_over = function()
+	{
+		alert("game_over");
+	}
+	obj.add_player();
+}
