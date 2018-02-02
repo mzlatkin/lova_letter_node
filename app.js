@@ -5,7 +5,10 @@ var io = require('socket.io')(http);
 var request = require('request');
 var index;  
 
+var CARD_LIST = JSON.parse(fs.readFileSync('assets/models/cards.json', 'utf8'));
+console.log(CARD_LIST);
 var SERVER_ROOMS = [{"name":"room 1","people":[],"current_cards":[],"turn":1}]
+var PLAYER_TEMPLATE = {"name": "","card_in_hand": "","picked_up_card": "","discard_array": []}
 
 var server = http.createServer(function(request, response) {
     if (request.url.indexOf('.js') != -1)
