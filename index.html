@@ -38,6 +38,7 @@
             <div class="row containing-row">
                 <!-- ko if: !joined() -->
                     <!-- ko foreach:server_rooms() -->
+                        <span data-bind="text:name">
                         <div class="col-xs-12">
                             <form class="form-inline">
                                 <input type="button" name="join" id="join" value="Join room 1" class="btn btn-primary" data-bind="click: join_room, text:name">
