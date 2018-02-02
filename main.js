@@ -27,6 +27,11 @@ function game_model(obj)
         }
     })
 
+    socket.on("client_update", function(data))
+    {
+
+    }
+
     self.join_room = function(room)
     {
         socket.emit("join_room", room["name"]);
@@ -34,10 +39,13 @@ function game_model(obj)
         obj.joined(true);
     }
 
+    self.draw_card = function()
+    {
+    	socket.emit("draw_card",obj.current_room_name())
+    }
 
 
-
-    self.end_turn = function(name)
+    self.end_turn = function()
     {
     	console.log("you ended your turn");
         socket.emit("end_turn", obj.current_room_name());

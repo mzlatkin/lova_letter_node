@@ -73,7 +73,18 @@ socket.on("connection", function (client) {
                 socket.in(room).emit("game_update", ret);  
             }
         };
-        
+    });
+
+    client.on("draw_card", function(room){
+        for (var i = 0; i < SERVER_ROOMS.length; i++) {
+            if (SERVER_ROOMS[i]["name"] == room)
+            {
+                console.log(SERVER_ROOMS[i]["CARD_LIST"])
+                // var num = Math.floor(Math.random()*SERVER_ROOMS[i][".length);
+                // var card = obj.cards().splice(num,1);
+                // return card[0];
+            }
+        };
     });
 
     client.on("test_room", function(room){
