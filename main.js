@@ -8,11 +8,11 @@ function game_model(obj)
         console.log(data);
     })
 
-    self.join_room = function(name)
+    self.join_room = function(room)
     {
         console.log("joined_room_1")
-        console.log(name)
-        // socket.emit("join_room", name);
+        console.log(room["name"])
+        socket.emit("join_room", room["name"]);
         obj.joined(true);
     }
 
