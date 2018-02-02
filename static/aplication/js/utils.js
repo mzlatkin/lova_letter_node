@@ -40,6 +40,7 @@ function ajax_get_player_template()
 
 function ajax_get_cards()
 {
+    console.log("called ajax");
     var ret = undefined;
     $.ajax({
         url: "assets/models/cards.JSON"+'?ts='+new Date().getTime(),
