@@ -50,6 +50,7 @@ socket.on("connection", function (client) {
     });
 
     client.on("test_room", function(room){
+        console.log("recived test_room call")
         socket.in(room).emit("room_test", "you are in room" + room);
     });
 
