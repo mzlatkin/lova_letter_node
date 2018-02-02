@@ -5,7 +5,7 @@ var io = require('socket.io')(http);
 var request = require('request');
 var index;  
 
-var SERVER_ROOMS = [{"name":"room 1","people":[],"current_cards":[],"turn":0}]
+var SERVER_ROOMS = [{"name":"room 1","people":[],"current_cards":[],"turn":1}]
 
 var server = http.createServer(function(request, response) {
     if (request.url.indexOf('.js') != -1)
@@ -50,6 +50,21 @@ socket.on("connection", function (client) {
             {
                 player_to_add = "player "+SERVER_ROOMS[i]["people"].length
                 SERVER_ROOMS[i]["people"].push(player_to_add); 
+                socket.in(room).emit("game_update", SERVER_ROOMS[i]);  
+            }
+        };
+        
+    });
+
+    client.on("end_turn", function(room){
+        for (var i = 0; i < SERVER_ROOMS.length; i++) {
+            if (SERVER_ROOMS[i]["name"] == room)
+            {
+                SERVER_ROOMS[i]["turn"] = SERVER_ROOMS[i]["turn"]+1
+                if(SERVER_ROOMS[i]["turn"] > SERVER_ROOMS[i]["people"].length-1)
+                {
+                    SERVER_ROOMS[i]["turn"] = 1
+                }
                 socket.in(room).emit("game_update", SERVER_ROOMS[i]);  
             }
         };

@@ -5,10 +5,20 @@ function game_model(obj)
 	obj.current_room_name = ko.observable();
 
 	obj.your_turn = ko.observable(false);
+	obj.player_number = ko.observable();
 
     socket.on("game_update", function(data) {
         // self.get_all_characters_success(data)
         console.log(data);
+        obj.player_number(data["people"].length);
+        if (obj.player_number() == data["turn"])
+        {
+        	obj.your_turn(true);
+        }
+        else
+        {
+        	obj.your_turn(false);
+        }
     })
 
     self.join_room = function(room)
