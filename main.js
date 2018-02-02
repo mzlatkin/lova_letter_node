@@ -7,6 +7,8 @@ function game_model(obj)
 	obj.your_turn = ko.observable(false);
 	obj.player_number = ko.observable("");
 
+	obj.your_card = ko.observable("");
+
     socket.on("game_update", function(data) {
         // self.get_all_characters_success(data)
         console.log(data);
@@ -31,7 +33,6 @@ function game_model(obj)
         obj.joined(true);
     }
 
-    
 
     self.end_turn = function(name)
     {

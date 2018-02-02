@@ -50,8 +50,10 @@ socket.on("connection", function (client) {
         for (var i = 0; i < SERVER_ROOMS.length; i++) {
             if (SERVER_ROOMS[i]["name"] == room)
             {
-                player_to_add = "player "+SERVER_ROOMS[i]["people"].length
-                SERVER_ROOMS[i]["people"].push(player_to_add); 
+                player = PLAYER_TEMPLATE
+                player["name"] = "player "+SERVER_ROOMS[i]["people"].length
+                SERVER_ROOMS[i]["people"].push(player); 
+
                 socket.in(room).emit("game_update", SERVER_ROOMS[i]);  
             }
         };
