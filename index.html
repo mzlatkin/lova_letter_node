@@ -1,9 +1,36 @@
 <!DOCTYPE html>  
 <html lang="en">
-<head>
+    <head>       
+        <meta charset="utf-8"/>
+        <title>Love Letter</title>
+        <meta content="text/html; charset=utf8">
+        <!-- socket.io -->
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            var socket = io.connect("192.168.0.34:8080");
+        </script>
+        <script src="/static/aplication/js/socket.js"></script>   
 
-    <link rel="stylesheet" type="text/css" href="/js/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/css/dashboard/main.css">
+        <!-- Bootstrap -->
+        <link href="static/framework/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="static/framework/bootstrap/css/slider.css" rel="stylesheet">
+
+        <script src="static/framework/bootstrap/js/bootstrap.min.js"></script>
+        <script src="static/framework/bootstrap/js/bootstrap-slider.js"></script>
+        <!-- knockout -->
+        <script src="static/framework/jquery/jquery-2.1.4.min.js"></script>
+        <script src="static/framework/knockout/knockout-3.3.0.js"></script>
+        <script src="static/framework/knockout/knockout.mapping.min.js"></script>
+
+        <!-- game code -->
+        <script src="main.js"></script> 
+        <script src="static/aplication/js/objects.js"></script> 
+        <script src="static/aplication/js/utils.js"></script> 
+        <script src="static/aplication/js/main.js"></script>
+        <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+    </head>
+
+    
 
     <body>
         <div class="container-fluid container-fluid-height">
@@ -31,15 +58,5 @@
         </div>
     </body>
 
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/js/jquery/jquery.min.js"></script>
-    <script src="/js/knockout/knockout.min.js"></script>
-    <script src="/js/knockout/ko.mapping.min.js"></script>
-    <script src="/js/bootstrap/js/bootstrap.min.js"></script>
-    <script>
-    var socket = io.connect("192.168.0.34:8080");
-    </script>
-    <script src="/js/utils/utils.js"></script>
-    <script src="/js/js/client.js"></script>
-    <script src="/js/js/dashboard_page_obj.js"></script>   
+    
 </html>
