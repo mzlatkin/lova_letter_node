@@ -29,10 +29,10 @@ var server = http.createServer(function(request, response) {
     else if (request.url.indexOf('.png') != -1)
     {
         console.log(request.url)
-        fs.readFile("./" + request.url, 'utf-8', function (error, data) {
+        fs.readFile("./" + request.url, function (error, data) {
             response.writeHead(200, {'Content-Type': 'image/png'});
-            response.write(data);
-            response.end();
+            // response.write(data);
+            response.end(data);
         });
     }
     else
