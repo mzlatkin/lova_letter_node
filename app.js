@@ -53,8 +53,8 @@ socket.on("connection", function (client) {
                 player = PLAYER_TEMPLATE
                 player["name"] = "player "+SERVER_ROOMS[i]["people"].length
                 SERVER_ROOMS[i]["people"].push(player); 
-
-                socket.in(room).emit("game_update", SERVER_ROOMS[i]);  
+                ret = {SERVER_ROOMS[i]["people"],SERVER_ROOMS[i]["turn"]}
+                socket.in(room).emit("game_update", ret);  
             }
         };
         
@@ -69,7 +69,8 @@ socket.on("connection", function (client) {
                 {
                     SERVER_ROOMS[i]["turn"] = 1
                 }
-                socket.in(room).emit("game_update", SERVER_ROOMS[i]);  
+                ret = {SERVER_ROOMS[i]["people"],SERVER_ROOMS[i]["turn"]}
+                socket.in(room).emit("game_update", ret);  
             }
         };
         

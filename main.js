@@ -12,6 +12,7 @@ function game_model(obj)
     socket.on("game_update", function(data) {
         // self.get_all_characters_success(data)
         console.log(data);
+
         if(obj.player_number() == "")
         {
         	obj.player_number(data["people"].length);
@@ -32,6 +33,8 @@ function game_model(obj)
         obj.current_room_name(room["name"]);
         obj.joined(true);
     }
+
+
 
 
     self.end_turn = function(name)
