@@ -1,0 +1,31 @@
+body {
+    background-color: #f0d175;
+    min-height: 100%;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.vertical-center{
+    position: absolute !important;
+    top: 50% !important;
+    -ms-transform: translateY(-50%); /* IE 9 */
+    -webkit-transform: translateY(-50%); /* Chrome, Safari, Opera */
+    transform: translateY(-50%);
+}
+
+.horizontal-center{
+    position: absolute !important;
+    left: 50% !important;
+    -ms-transform: translateX(-50%); /* IE 9 */
+    -webkit-transform: translateX(-50%); /* Chrome, Safari, Opera */
+    transform: translateX(-50%);
+}
+
+.full-center{
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    -ms-transform: translate(-50%, -50%); /* IE 9 */
+    -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */
+    transform: translate(-50%, -50%);
+}
