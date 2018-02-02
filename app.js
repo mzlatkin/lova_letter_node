@@ -79,10 +79,10 @@ socket.on("connection", function (client) {
         for (var i = 0; i < SERVER_ROOMS.length; i++) {
             if (SERVER_ROOMS[i]["name"] == room)
             {
-                console.log(SERVER_ROOMS[i]["CARD_LIST"])
-                // var num = Math.floor(Math.random()*SERVER_ROOMS[i][".length);
-                // var card = obj.cards().splice(num,1);
-                // return card[0];
+                // console.log(SERVER_ROOMS[i]["CARD_LIST"]["cards"])
+                var num = Math.floor(Math.random()*SERVER_ROOMS[i]["CARD_LIST"]["cards"].length);
+                var card = SERVER_ROOMS[i]["CARD_LIST"]["cards"].splice(num,1);
+                client.emit("client_update", card[0]);
             }
         };
     });
