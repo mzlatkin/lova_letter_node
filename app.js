@@ -26,6 +26,14 @@ var server = http.createServer(function(request, response) {
             response.end();
         });
     }
+    else if (request.url.indexOf('.png') != -1)
+    {
+        fs.readFile("./" + request.url, 'utf-8', function (error, data) {
+            response.writeHead(200, {'Content-Type': 'image/jpg'});
+            response.write(data);
+            response.end();
+        });
+    }
     else
     {
         fs.readFile("index.html", 'utf-8', function (error, data) {
