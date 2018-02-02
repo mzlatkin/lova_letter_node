@@ -45,7 +45,7 @@ socket.on("connection", function (client) {
 
     client.on("join_room", function(room){
         client.join(room);
-        for (var i = 0; i <= SERVER_ROOMS.length; i++) {
+        for (var i = 0; i < SERVER_ROOMS.length; i++) {
             if (SERVER_ROOMS[i]["name"] == room)
             {
                 player_to_add = "player "+SERVER_ROOMS[i]["people"].length
