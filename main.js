@@ -24,5 +24,6 @@ function game_model(obj)
     socket.emit("get_rooms");
     socket.on("return_rooms", function(data) {
         obj.server_rooms(data)
+        console.log(obj.server_rooms())
     })
 }
