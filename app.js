@@ -49,7 +49,7 @@ socket.on("connection", function (client) {
             if (SERVER_ROOMS[i]["name"] == room)
             {
                 player_to_add = "player "+SERVER_ROOMS[i]["people"].length+1
-                SERVER_ROOMS[i]["people"].append(player_to_add); 
+                SERVER_ROOMS[i]["people"].push(player_to_add); 
                 socket.in(room).emit("game_update", player_to_add + " has joined the room");  
             }
         };
