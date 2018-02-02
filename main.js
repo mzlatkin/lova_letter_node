@@ -50,7 +50,7 @@ socket.on("connection", function (client) {
     });
 
     client.on("test_room", function(room){
-        socket.in(room).client.emit("room_test", "you are in room" + room);
+        socket.in(room).emit("room_test", "you are in room" + room);
     });
 
     // client.on("get_character_details", function(pk){
