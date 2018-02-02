@@ -29,7 +29,10 @@ function game_model(obj)
 
     socket.on("client_update", function(data){
     	console.log(data);
-
+    	if (data["card"] != undefined)
+    	{
+    		obj.your_card(data["card"]);
+    	}
     });
 
     self.join_room = function(room)

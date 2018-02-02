@@ -82,7 +82,7 @@ socket.on("connection", function (client) {
                 // console.log(SERVER_ROOMS[i]["CARD_LIST"]["cards"])
                 var num = Math.floor(Math.random()*SERVER_ROOMS[i]["CARD_LIST"]["cards"].length);
                 var card = SERVER_ROOMS[i]["CARD_LIST"]["cards"].splice(num,1);
-                client.emit("client_update", card[0]);
+                client.emit("client_update", {"card":card[0]});
             }
         };
     });
