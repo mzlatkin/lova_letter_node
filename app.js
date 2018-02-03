@@ -31,7 +31,6 @@ var server = http.createServer(function(request, response) {
         console.log(request.url)
         fs.readFile("./" + request.url, function (error, data) {
             response.writeHead(200, {'Content-Type': 'image/png'});
-            // response.write(data);
             response.end(data);
         });
     }
