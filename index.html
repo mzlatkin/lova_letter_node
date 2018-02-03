@@ -47,14 +47,16 @@
                 <!-- /ko -->
                 <!-- ko if: joined() -->
                     <div class="col-xs-12">
-                        <span>your turn:</span><span data-bind="text:your_turn"></span>
-                         <span>player:</span><span data-bind="text:player_number"></span>
-                        <form class="form-inline">
-                            <input type="button" value="End turn" class="btn btn-primary" data-bind="click: end_turn">
-                        </form>
-                        <form class="form-inline">
-                            <input type="button" value="Draw card" class="btn btn-primary" data-bind="click: draw_card">
-                        </form>
+                        <div data-bind="visible:your_turn">
+                            <span>your turn:</span><span data-bind="text:your_turn"></span>
+                             <span>player:</span><span data-bind="text:player_number"></span>
+                            <form class="form-inline">
+                                <input type="button" value="End turn" class="btn btn-primary" data-bind="click: end_turn">
+                            </form>
+                            <form class="form-inline">
+                                <input type="button" value="Draw card" class="btn btn-primary" data-bind="click: draw_card">
+                            </form>
+                        </div>
                         <div>
                             <span>card in hand:</span>
                             <p>
