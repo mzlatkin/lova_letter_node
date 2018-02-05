@@ -59,7 +59,7 @@ socket.on("connection", function (client) {
             if (SERVER_ROOMS[i]["name"] == room)
             {
                 player = PLAYER_TEMPLATE
-                player["name"] = "player "+SERVER_ROOMS[i]["people"].length
+                player["name"] = "player "+(SERVER_ROOMS[i]["people"].length+1)
                 SERVER_ROOMS[i]["people"].push(player); 
                 ret = {"people":SERVER_ROOMS[i]["people"], "turn":SERVER_ROOMS[i]["turn"]}
                 socket.in(room).emit("game_update", ret);  
@@ -69,7 +69,6 @@ socket.on("connection", function (client) {
     });
 
     client.on("play_card", function(data){
-        console.log(client);
         console.log(data);
 
     });
