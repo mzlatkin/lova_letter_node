@@ -80,26 +80,30 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div data-bind="visible:choosing_card">
+                        <!-- ko if: choosing_card() -->
                             <div>
-                                <span>card in hand:</span>
+                                <div>
+                                    <span>card in hand:</span>
+                                    <p>
+                                        <img data-bind="attr: { src: card_in_hand().img }, click: function(){pick_and_play_card(card_in_hand(),picked_up_card())}" ></img>
+                                    </p>
+                                </div>
+                                <div>
+                                    <span>picked up card:</span>
+                                    <p>
+                                        <img data-bind="attr: { src: picked_up_card().img }, click: function(){pick_and_play_card(picked_up_card(),card_in_hand())}" ></img>
+                                    </p>                        
+                                </div>
+                            </div>
+                        <!-- /ko -->
+                        <!-- ko if: !choosing_card() -->
+                            <div>
+                                <span>played card:</span>
                                 <p>
-                                    <img data-bind="attr: { src: card_in_hand().img }, click: function(){pick_and_play_card(card_in_hand(),picked_up_card())}" ></img>
+                                    <img data-bind="attr: { src: card_played_this_turn().img }" ></img>
                                 </p>
                             </div>
-                            <div>
-                                <span>picked up card:</span>
-                                <p>
-                                    <img data-bind="attr: { src: picked_up_card().img }, click: function(){pick_and_play_card(picked_up_card(),card_in_hand())}" ></img>
-                                </p>                        
-                            </div>
-                        </div>
-                        <div data-bind="visible:choosing_card == false">
-                            <span>played card:</span>
-                            <p>
-                                <img data-bind="attr: { src: card_played_this_turn().img }" ></img>
-                            </p>
-                        </div>
+                        <!-- /ko -->
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
