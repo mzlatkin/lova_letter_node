@@ -57,9 +57,12 @@ function game_model(obj)
     	socket.emit("draw_card",obj.current_room_name())
     }
 
-    self.pick_and_play_card = function(data)
+    self.pick_and_play_card = function(card_played, card_kept)
     {
-        console.log(data);
+        console.log("this is where the card you played does things")
+
+        obj.card_in_hand(card_kept);
+        obj.picked_up_card("");
     }
 
     self.end_turn = function()
