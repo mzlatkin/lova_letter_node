@@ -9,7 +9,7 @@ function game_model(obj)
 
 	obj.card_in_hand = ko.observable("");
     obj.picked_up_card = ko.observable("");
-    obj.card_played = ko.observable("");
+    obj.card_played_this_turn = ko.observable("");
 
     obj.choosing_card = ko.observable(false);
 
@@ -64,13 +64,13 @@ function game_model(obj)
     {
         obj.card_in_hand(card_kept);
         obj.choosing_card(false);
-        obj.card_played(card_played);
+        obj.card_played_this_turn(card_played);
         card_intraction(card_played);
     }
 
     self.card_intraction = function(card_played)
     {
-
+        console.log(card_played)
     }
 
     self.end_turn = function()

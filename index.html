@@ -94,10 +94,10 @@
                                 </p>                        
                             </div>
                         </div>
-                        <div data-bind="visible:!choosing_card">
+                        <div data-bind="visible:choosing_card == false">
                             <span>played card:</span>
                             <p>
-                                <img data-bind="attr: { src: card_played().img }" ></img>
+                                <img data-bind="attr: { src: card_played_this_turn().img }" ></img>
                             </p>
                         </div>
                     </div>
