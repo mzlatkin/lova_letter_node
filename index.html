@@ -103,6 +103,31 @@
                                     <img data-bind="attr: { src: card_played_this_turn().img }" ></img>
                                 </p>
                             </div>
+                            <!-- ko if: card_played_this_turn().name == "Guard" -->
+                                <span> do Guard things</span>
+                            <!-- /ko -->
+                            <!-- ko if: card_played_this_turn().name == "Preist" -->
+                                <span> do Preist things</span>
+                            <!-- /ko -->
+                            <!-- ko if: card_played_this_turn().name == "Barron" -->
+                                <span> do Barron things</span>
+                            <!-- /ko -->
+                            <!-- ko if: card_played_this_turn().name == "Hand Maiden" -->
+                                <span> do Hand Maiden things</span>
+                            <!-- /ko -->
+                            <!-- ko if: card_played_this_turn().name == "Prince" -->
+                                <span> do Prince things</span>
+                            <!-- /ko -->
+                            <!-- ko if: card_played_this_turn().name == "King" -->
+                                <span> do King things</span>
+                            <!-- /ko -->
+                            <!-- ko if: card_played_this_turn().name == "Countess" -->  
+                                <span> do Countess things</span>
+                            <!-- /ko -->
+                            <!-- ko if: card_played_this_turn().name == "Princess" -->
+                                <span>you lose</span>
+                            <!-- /ko -->
+                            
                         <!-- /ko -->
                     </div>
                     <div class="modal-footer">
