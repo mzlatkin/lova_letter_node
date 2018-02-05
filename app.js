@@ -60,7 +60,10 @@ socket.on("connection", function (client) {
             {
                 player = PLAYER_TEMPLATE
                 player["name"] = "player "+(SERVER_ROOMS[i]["people"].length+1)
-                SERVER_ROOMS[i]["people"].push(player); 
+                console.log(SERVER_ROOMS[i]["people"]);
+                SERVER_ROOMS[i]["people"].push(player);
+                console.log(SERVER_ROOMS[i]["people"]);
+                 
                 ret = {"people":SERVER_ROOMS[i]["people"], "turn":SERVER_ROOMS[i]["turn"]}
                 socket.in(room).emit("game_update", ret);  
             }
