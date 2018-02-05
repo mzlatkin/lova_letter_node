@@ -68,7 +68,7 @@ socket.on("connection", function (client) {
         
     });
 
-    client.on("play_card" function(data)){
+    client.on("play_card" function(data){
         console.log(client);
         console.log(data);
 
