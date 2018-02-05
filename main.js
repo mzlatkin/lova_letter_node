@@ -11,6 +11,8 @@ function game_model(obj)
 
     obj.picked_up_card = ko.observable("");
 
+    obj.choosing_card = ko.observable(false);
+
     socket.on("game_update", function(data) {
         // self.get_all_characters_success(data)
         console.log(data);
@@ -54,6 +56,7 @@ function game_model(obj)
 
     self.draw_card = function()
     {
+        obj.choosing_card(true);
     	socket.emit("draw_card",obj.current_room_name())
     }
 
@@ -63,6 +66,7 @@ function game_model(obj)
 
         obj.card_in_hand(card_kept);
         obj.picked_up_card("");
+        obj.choosing_card(false);
     }
 
     self.end_turn = function()

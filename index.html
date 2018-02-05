@@ -80,7 +80,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div>
+                        <div data-bind="visible:choosing_card">
                             <span>card in hand:</span>
                             <p>
                                 <img data-bind="attr: { src: card_in_hand().img }, click: function(){pick_and_play_card(card_in_hand(),picked_up_card())}" ></img>
