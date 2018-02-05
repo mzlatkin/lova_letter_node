@@ -99,18 +99,4 @@ socket.on("connection", function (client) {
         console.log("testing room " + room)
         socket.in(room).emit("room_test", "you are in room" + room);
     });
-
-    // client.on("post_weapon_equip", function(pk,equipped){
-
-    //     request({
-    //         url: 'http://192.168.0.23:8000/weapon_association/'+pk+'/',
-    //         method: "PATCH",
-    //         json: true,   // <--Very important!!!
-    //         body: {'equipped': equipped}
-    //     }, function (error, response, body){
-    //         console.log(body['pk']);
-    //         socket.sockets.emit("update_equiped"+body['pk'], body);
-    //     });
-    // });
-
 });

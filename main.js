@@ -48,6 +48,11 @@ function game_model(obj)
     	socket.emit("draw_card",obj.current_room_name())
     }
 
+    self.play_card = function()
+    {
+        
+    }
+
 
     self.end_turn = function()
     {
