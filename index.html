@@ -94,6 +94,12 @@
                                 </p>                        
                             </div>
                         </div>
+                        <div data-bind="visible:!choosing_card">
+                            <span>played card:</span>
+                            <p>
+                                <img data-bind="attr: { src: picked_up_card().img }" ></img>
+                            </p>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
