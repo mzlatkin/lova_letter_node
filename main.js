@@ -71,6 +71,7 @@ function game_model(obj)
     self.card_intraction = function(card_played)
     {
         console.log(card_played)
+        socket.emit("end_turn", {"room":obj.current_room_name(),"card":card_played});
     }
 
     self.end_turn = function()

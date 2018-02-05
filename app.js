@@ -68,6 +68,12 @@ socket.on("connection", function (client) {
         
     });
 
+    client.on("play_card" function(data)){
+        console.log(client);
+        console.log(data);
+
+    }
+
     client.on("end_turn", function(room){
         for (var i = 0; i < SERVER_ROOMS.length; i++) {
             if (SERVER_ROOMS[i]["name"] == room)
