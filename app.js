@@ -59,9 +59,9 @@ socket.on("connection", function (client) {
             if (SERVER_ROOMS[i]["name"] == room)
             {
                 player = PLAYER_TEMPLATE
-                player_number = (SERVER_ROOMS[i]["people"].length+1).toString();
+                player_number = (SERVER_ROOMS[i]["people"].length()+1).toString();
                 player["name"] = "player "+player_number;
-                // SERVER_ROOMS[i]["people"].push(player);
+                SERVER_ROOMS[i]["people"].push(player);
                 console.log(SERVER_ROOMS[i]["people"]);
 
                 ret = {"people":SERVER_ROOMS[i]["people"], "turn":SERVER_ROOMS[i]["turn"]}
