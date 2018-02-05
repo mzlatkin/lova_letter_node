@@ -61,7 +61,7 @@ socket.on("connection", function (client) {
                 player = PLAYER_TEMPLATE
                 player_number = (SERVER_ROOMS[i]["people"].length+1).toString();
                 player["name"] = "player "+player_number;
-                SERVER_ROOMS[i]["people"].push(player);
+                // SERVER_ROOMS[i]["people"].push(player);
                 console.log(SERVER_ROOMS[i]["people"]);
 
                 ret = {"people":SERVER_ROOMS[i]["people"], "turn":SERVER_ROOMS[i]["turn"]}
