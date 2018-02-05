@@ -8,8 +8,8 @@ function game_model(obj)
 	obj.player_number = ko.observable("");
 
 	obj.card_in_hand = ko.observable("");
-
     obj.picked_up_card = ko.observable("");
+    obj.card_played = ko.observable("");
 
     obj.choosing_card = ko.observable(false);
 
@@ -62,11 +62,15 @@ function game_model(obj)
 
     self.pick_and_play_card = function(card_played, card_kept)
     {
-        console.log("this is where the card you played does things")
-
         obj.card_in_hand(card_kept);
-        obj.picked_up_card("");
         obj.choosing_card(false);
+        obj.card_played(card_played);
+        card_intraction(card_played);
+    }
+
+    self.card_intraction = function(card_played)
+    {
+
     }
 
     self.end_turn = function()
