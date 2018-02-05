@@ -62,7 +62,7 @@
                         <div>
                             <span>card in hand:</span>
                             <p>
-                                <img data-dismiss="modal" data-bind="attr: { src: card_in_hand().img }, click: function(){$parent.keep_picked_up_card()}" ></img>
+                                <img data-dismiss="modal" data-bind="attr: { src: card_in_hand().img }" ></img>
                             </p>
                         </div>
                     </div>
@@ -83,13 +83,13 @@
                         <div>
                             <span>card in hand:</span>
                             <p>
-                                <img data-dismiss="modal" data-bind="attr: { src: card_in_hand().img }, click: function(){$parent.keep_picked_up_card()}" ></img>
+                                <img data-dismiss="modal" data-bind="attr: { src: card_in_hand().img }, click: function(){pick_and_play_card(card_in_hand())}" ></img>
                             </p>
                         </div>
                         <div>
                             <span>picked up card:</span>
                             <p>
-                                <img data-dismiss="modal" data-bind="attr: { src: card_in_hand().img }, click: function(){$parent.keep_picked_up_card()}" ></img>
+                                <img data-dismiss="modal" data-bind="attr: { src: picked_up_card().img }, click: function(){pick_and_play_card(picked_up_card())}" ></img>
                             </p>                        
                         </div>
                     </div>
