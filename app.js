@@ -105,7 +105,7 @@ socket.on("connection", function (client) {
         var roster = io.sockets.clients(data["room"]);
 
         roster.forEach(function(client) {
-            console.log('Username: ' + client.nickname);
+            console.log('Username: ');
         });
 
     })
