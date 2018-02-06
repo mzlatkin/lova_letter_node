@@ -75,12 +75,11 @@ function game_model(obj)
         obj.card_in_hand(card_kept);
         obj.choosing_card(false);
         obj.card_played_this_turn(card_played);
-        card_intraction(card_played);
     }
 
-    self.card_intraction = function(card_played)
+    self.card_intraction = function()
     {
-        console.log(card_played)
+        console.log(obj.card_played_this_turn())
         console.log(obj.players_in_the_room())
         socket.emit("play_card", {"room":obj.current_room_name(),"card":card_played});
     }
