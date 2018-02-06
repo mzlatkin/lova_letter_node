@@ -101,6 +101,7 @@ socket.on("connection", function (client) {
     });
 
     client.on("start_game", function(data){
+        console.log("called start game");
         var roster = io.sockets.clients(data["room"]);
 
         roster.forEach(function(client) {
