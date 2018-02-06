@@ -29,3 +29,7 @@ body {
     -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */
     transform: translate(-50%, -50%);
 }
+
+.turn_background{
+    background-color: blue;
+}
