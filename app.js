@@ -4,6 +4,7 @@ var io = require('socket.io')(http);
 var request = require('request');
 var index;  
 
+//bad form, using the same object >:(
 var CARD_LIST = JSON.parse(fs.readFileSync('assets/models/cards.json', 'utf8'));
 var SERVER_ROOMS = [{"name":"room 1","people":[],CARD_LIST,"turn":1,"game_started":false},{"name":"room 2","people":[],CARD_LIST,"turn":1,"game_started":false}]
 
