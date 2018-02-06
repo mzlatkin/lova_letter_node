@@ -37,10 +37,10 @@
         <div class="container-fluid container-fluid-height">
             <div class="row containing-row">
                 <!-- ko if: !joined() -->
+                    <input type="text" class="input-small" placeholder="Your name" id="name" data-bind="value:username, valueUpdate:'input'">
                     <!-- ko foreach:server_rooms() -->
                         <div class="col-xs-12">
                             <form class="form-inline">
-                                <input type="text" class="input-small" placeholder="Your name" id="name" data-bind="value:username, valueUpdate:'input'">
                                 <input type="button" name="join" id="join" class="btn btn-primary" data-bind="click: join_room, value:name">
                             </form>
                         </div>
