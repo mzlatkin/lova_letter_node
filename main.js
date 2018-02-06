@@ -35,9 +35,7 @@ function game_model(obj)
     });
 
     socket.on("starting_hands", function(data) {
-        console.log(data);
-        console.log(obj.player_number());
-        obj.card_in_hand(data[obj.player_number()])
+        obj.card_in_hand(data[obj.player_number()-1])
     });
 
     socket.on("client_update", function(data){
