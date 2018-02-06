@@ -20,7 +20,6 @@ function game_model(obj)
         obj.players_in_the_room(data["people"]);
         if(obj.player_number() == "")
         {
-            obj.current_room_name(room["name"]);
             obj.joined(true);
         	obj.player_number(data["people"].length);
         }
@@ -56,6 +55,7 @@ function game_model(obj)
 
     self.join_room = function(room)
     {
+        obj.current_room_name(room["name"]);
         socket.emit("join_room", {"room":room["name"],"username":obj.username()});
     }
     self.start_game = function()
