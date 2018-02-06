@@ -110,7 +110,7 @@ socket.on("connection", function (client) {
 
                 cards_drawn = []
 
-                for (var k = 0; k < SERVER_ROOMS[i]["people"].length-1; k++) {
+                for (var k = 0; k < SERVER_ROOMS[i]["people"].length; k++) {
                     num = Math.floor(Math.random()*SERVER_ROOMS[k]["CARD_LIST"]["cards"].length);
                     card = SERVER_ROOMS[k]["CARD_LIST"]["cards"].splice(num,1);
                     console.log(card)
