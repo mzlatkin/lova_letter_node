@@ -34,6 +34,10 @@ function game_model(obj)
         }
     });
 
+    socket.on("starting_hands", function(data) {
+        obj.card_in_hand(data[obj.player_number()])
+    });
+
     socket.on("client_update", function(data){
     	if (data["card"] != undefined)
     	{
