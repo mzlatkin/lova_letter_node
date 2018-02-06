@@ -56,6 +56,7 @@ function game_model(obj)
     }
     self.start_game = function()
     {
+        console.log("called start game");
         socket.emit("start_game", {"room":room["name"]});
     }
 
