@@ -7,7 +7,6 @@ var index;
 
 var CARD_LIST = JSON.parse(fs.readFileSync('assets/models/cards.json', 'utf8'));
 var SERVER_ROOMS = [{"name":"room 1","people":[],CARD_LIST,"turn":1}]
-var PLAYER_TEMPLATE = {"name": "","card_in_hand": "","picked_up_card": "","discard_array": []}
 
 var server = http.createServer(function(request, response) {
     if (request.url.indexOf('.js') != -1)
@@ -58,7 +57,7 @@ socket.on("connection", function (client) {
         for (var i = 0; i < SERVER_ROOMS.length; i++) {
             if (SERVER_ROOMS[i]["name"] == data["room"])
             {
-                player = PLAYER_TEMPLATE
+                player = {"name": "","card_in_hand": "","picked_up_card": "","discard_array": []}
                 player["name"] = data["username"];
                 SERVER_ROOMS[i]["people"].push(player);
 
