@@ -26,7 +26,6 @@ function game_model(obj)
         }
 
         obj.current_player(data["people"][(data["turn"]-1)])
-        console.log(obj.current_player());
         if (obj.player_number() == data["turn"])
         {
 

@@ -47,6 +47,11 @@
                     <!-- /ko -->
                 <!-- /ko -->
                 <!-- ko if: joined() -->
+                    <!-- ko foreach:players_in_the_room() -->
+                        <div class="col-xs-3">
+                            <span data-bind="name"></span>
+                        </div>
+                    <!-- /ko -->
                     <div class="col-xs-12">
                         <div data-bind="visible:your_turn">
                             <span>your turn:</span><span data-bind="text:your_turn"></span>
