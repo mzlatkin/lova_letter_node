@@ -100,6 +100,15 @@ socket.on("connection", function (client) {
         };
     });
 
+    client.on("start_game", function(data){
+        var roster = io.sockets.clients(data["room"]);
+
+        roster.forEach(function(client) {
+            console.log('Username: ' + client.nickname);
+        });
+
+    })
+
     client.on("test_room", function(room){
         console.log("testing room " + room)
         socket.in(room).emit("room_test", "you are in room" + room);

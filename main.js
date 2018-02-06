@@ -52,9 +52,11 @@ function game_model(obj)
     {
         obj.current_room_name(room["name"]);
         socket.emit("join_room", {"room":room["name"],"username":obj.username()});
-        
         obj.joined(true);
-        self.draw_card()
+    }
+    self.start_game = function()
+    {
+        socket.emit("start_game", {"room":room["name"]});
     }
 
     self.draw_card = function()
