@@ -115,7 +115,7 @@ socket.on("connection", function (client) {
                     var num = Math.floor(Math.random()*SERVER_ROOMS[i]["CARD_LIST"]["cards"].length);
                     cards_drawn.push(SERVER_ROOMS[i]["CARD_LIST"]["cards"].splice(num,1));
                 };
-                socket.in(room).emit("starting_hands", cards_drawn);
+                socket.in(data["room"]).emit("starting_hands", cards_drawn);
             }
         }
     })
