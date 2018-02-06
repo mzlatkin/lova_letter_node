@@ -53,19 +53,17 @@ socket.on("connection", function (client) {
         client.emit("return_rooms",SERVER_ROOMS);
     });
 
-    client.on("join_room", function(room){
-        client.join(room);
+    client.on("join_room", function(data){
+        client.join(data["room"]);
         for (var i = 0; i < SERVER_ROOMS.length; i++) {
-            if (SERVER_ROOMS[i]["name"] == room)
+            if (SERVER_ROOMS[i]["name"] == data["room"])
             {
                 player = PLAYER_TEMPLATE
-                player_number = (SERVER_ROOMS[i]["people"].length+1).toString();
-                player["name"] = "player "+player_number;
+                player["name"] = data["username"];
                 SERVER_ROOMS[i]["people"].push(player);
-                console.log(SERVER_ROOMS[i]["people"]);
 
                 ret = {"people":SERVER_ROOMS[i]["people"], "turn":SERVER_ROOMS[i]["turn"]}
-                socket.in(room).emit("game_update", ret);  
+                socket.in(data["room"]).emit("game_update", ret);  
             }
         };
         
