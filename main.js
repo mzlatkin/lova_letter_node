@@ -8,6 +8,7 @@ function game_model(obj)
 
 	obj.your_turn = ko.observable(false);
 	obj.player_number = ko.observable("");
+    obj.current_player = ko.observable();
 
 	obj.card_in_hand = ko.observable("");
     obj.picked_up_card = ko.observable("");
@@ -24,9 +25,11 @@ function game_model(obj)
         	obj.player_number(data["people"].length);
         }
 
-
+        obj.current_player(data["people"][(data["turn"]-1)])
+        console.log(obj.current_player());
         if (obj.player_number() == data["turn"])
         {
+
         	obj.your_turn(true);
         }
         else
