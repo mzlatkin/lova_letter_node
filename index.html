@@ -50,11 +50,10 @@
                     <div data-bind="foreach: players_in_the_room()">
                         <div class="col-xs-3" data-bind:"css: { turn_background: name == $parent.current_player.name }">
                             <span data-bind="text: name"></span>
-                            
-                            
+                            <span data-bind="text: current_player().name"></span>
                         </div>
                     </div>
-                    <span data-bind="text: current_player().name"></span>
+                    
                     <div class="col-xs-12">
                         <div data-bind="visible:your_turn">
                             <span>your turn:</span><span data-bind="text:your_turn"></span>
