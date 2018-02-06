@@ -35,6 +35,7 @@ function game_model(obj)
     });
 
     socket.on("starting_hands", function(data) {
+        console.log(data);
         obj.card_in_hand(data[obj.player_number()])
     });
 
