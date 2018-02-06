@@ -48,7 +48,7 @@
                 <!-- /ko -->
                 <!-- ko if: joined() -->
                     <div data-bind="foreach: players_in_the_room()">
-                        <div class="col-xs-3" data-bind="css: { turn_background: name == $parent.current_player }">
+                        <div class="col-xs-3" data-bind="css: { turn_background: (name == $parent.current_player) }">
                             <span data-bind="text: name"></span>
                         </div>
                     </div>
