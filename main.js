@@ -20,6 +20,8 @@ function game_model(obj)
         obj.players_in_the_room(data["people"]);
         if(obj.player_number() == "")
         {
+            obj.current_room_name(room["name"]);
+            obj.joined(true);
         	obj.player_number(data["people"].length);
         }
         obj.current_player(data["people"][(data["turn"]-1)]["name"]);
@@ -36,7 +38,6 @@ function game_model(obj)
 
     socket.on("starting_hands", function(data) {
         obj.card_in_hand(data[obj.player_number()-1][0])
-        console.log(obj.card_in_hand());
     });
 
     socket.on("client_update", function(data){
@@ -55,9 +56,7 @@ function game_model(obj)
 
     self.join_room = function(room)
     {
-        obj.current_room_name(room["name"]);
         socket.emit("join_room", {"room":room["name"],"username":obj.username()});
-        obj.joined(true);
     }
     self.start_game = function()
     {
