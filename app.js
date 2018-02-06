@@ -103,13 +103,14 @@ socket.on("connection", function (client) {
         for (var i = 0; i < SERVER_ROOMS.length; i++) {
             if (SERVER_ROOMS[i]["name"] == data["room"])
             {
-                
+
                 // remove one card from play
                 var num = Math.floor(Math.random()*SERVER_ROOMS[i]["CARD_LIST"]["cards"].length);
                 var card = SERVER_ROOMS[i]["CARD_LIST"]["cards"].splice(num,1);
 
                 cards_drawn = []
                 console.log(SERVER_ROOMS[i]["people"])
+                console.log(SERVER_ROOMS[i]["people"].length)
                 for (var i = 0; i < SERVER_ROOMS[i]["people"].length; i++) {
                     var num = Math.floor(Math.random()*SERVER_ROOMS[i]["CARD_LIST"]["cards"].length);
                     cards_drawn.push(SERVER_ROOMS[i]["CARD_LIST"]["cards"].splice(num,1));
