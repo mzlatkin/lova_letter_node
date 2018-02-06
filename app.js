@@ -56,7 +56,7 @@ socket.on("connection", function (client) {
         for (var i = 0; i < SERVER_ROOMS.length; i++) {
             if (SERVER_ROOMS[i]["name"] == data["room"] && !SERVER_ROOMS[i]["game_started"])
             {
-                player = {"name": "","card_in_hand": "","picked_up_card": "","discard_array": []}
+                player = {"name": "","card_in_hand": "","picked_up_card": "","discard_array": [],"eliminated":false}
                 player["name"] = data["username"];
                 SERVER_ROOMS[i]["people"].push(player);
 
@@ -68,15 +68,8 @@ socket.on("connection", function (client) {
     });
 
     client.on("play_card", function(data){
-        for (var i = 0; i < SERVER_ROOMS.length; i++) {
-            if (SERVER_ROOMS[i]["name"] == data["room"])
-            {
-                if(SERVER_ROOMS[i]["CARD_LIST"]["cards"].length == 0)
-                {
-                    socket.in(room).emit("game_over", "game is over");
-                }
-            }
-        }
+        console.log("played card");
+        console.log(data);
     });
 
     client.on("end_turn", function(room){
@@ -113,7 +106,7 @@ socket.on("connection", function (client) {
                 SERVER_ROOMS[i]["game_started"] = true;
                 // remove one card from play
                 var num = Math.floor(Math.random()*SERVER_ROOMS[i]["CARD_LIST"]["cards"].length);
-                var card = SERVER_ROOMS[i]["CARD_LIST"]["cards"].splice(num,1);
+                SERVER_ROOMS[i]["side_card"] = SERVER_ROOMS[i]["CARD_LIST"]["cards"].splice(num,1);
 
                 cards_drawn = []
 

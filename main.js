@@ -81,6 +81,7 @@ function game_model(obj)
     self.card_intraction = function(card_played)
     {
         console.log(card_played)
+        console.log(obj.players_in_the_room())
         socket.emit("play_card", {"room":obj.current_room_name(),"card":card_played});
     }
 
