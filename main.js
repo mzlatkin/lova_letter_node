@@ -57,7 +57,7 @@ function game_model(obj)
     self.start_game = function()
     {
         console.log("called start game");
-        socket.emit("start_game", {"room":room["name"]});
+        socket.emit("start_game", {"room":obj.current_room_name()});
     }
 
     self.draw_card = function()
