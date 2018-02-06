@@ -17,15 +17,12 @@ function game_model(obj)
     obj.choosing_card = ko.observable(false);
 
     socket.on("game_update", function(data) {
-        // self.get_all_characters_success(data)
-        console.log(data);
         obj.players_in_the_room(data["people"]);
         if(obj.player_number() == "")
         {
         	obj.player_number(data["people"].length);
         }
-        obj.current_player(data["people"][(data["turn"]-1)])
-        console.log(obj.current_player());
+        obj.current_player(data["people"][(data["turn"]-1)]);
         if (obj.player_number() == data["turn"])
         {
 
@@ -38,7 +35,6 @@ function game_model(obj)
     });
 
     socket.on("client_update", function(data){
-    	console.log(data);
     	if (data["card"] != undefined)
     	{
             if (obj.card_in_hand() == "")
@@ -83,7 +79,6 @@ function game_model(obj)
 
     self.end_turn = function()
     {
-    	console.log("you ended your turn");
         socket.emit("end_turn", obj.current_room_name());
     }
 
