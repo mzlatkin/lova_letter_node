@@ -4,10 +4,8 @@ var io = require('socket.io')(http);
 var request = require('request');
 var index;  
 
-var OG_CARD_LIST = JSON.parse(fs.readFileSync('assets/models/cards.json', 'utf8'));
-
-var CARD_LIST = OG_CARD_LIST.slice(0, OG_CARD_LIST.length)
-var SERVER_ROOMS = [{"name":"room 1","people":[],CARD_LIST,"turn":1,"game_started":false}]
+var CARD_LIST = JSON.parse(fs.readFileSync('assets/models/cards.json', 'utf8'));
+var SERVER_ROOMS = [{"name":"room 1","people":[],CARD_LIST,"turn":1,"game_started":false},{"name":"room 2","people":[],CARD_LIST,"turn":1,"game_started":false}]
 
 var server = http.createServer(function(request, response) {
     if (request.url.indexOf('.js') != -1)
