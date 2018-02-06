@@ -1,4 +1,3 @@
-var people = {};
 var http = require('http');
 var fs = require('fs');
 var io = require('socket.io')(http);  
@@ -104,6 +103,7 @@ socket.on("connection", function (client) {
         for (var i = 0; i < SERVER_ROOMS.length; i++) {
             if (SERVER_ROOMS[i]["name"] == data["room"])
             {
+                console.log(SERVER_ROOMS[i])
                 // remove one card from play
                 var num = Math.floor(Math.random()*SERVER_ROOMS[i]["CARD_LIST"]["cards"].length);
                 var card = SERVER_ROOMS[i]["CARD_LIST"]["cards"].splice(num,1);
