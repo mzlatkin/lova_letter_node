@@ -113,10 +113,8 @@ socket.on("connection", function (client) {
                 for (var k = 0; k < SERVER_ROOMS[i]["people"].length; k++) {
                     num = Math.floor(Math.random()*SERVER_ROOMS[k]["CARD_LIST"]["cards"].length);
                     card = SERVER_ROOMS[k]["CARD_LIST"]["cards"].splice(num,1);
-                    console.log(card)
                     cards_drawn.push(card)
                 };
-                console.log(cards_drawn)
                 socket.in(data["room"]).emit("starting_hands", cards_drawn);
             }
         }
