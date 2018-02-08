@@ -15,6 +15,9 @@ function game_model(obj)
     obj.card_played_this_turn = ko.observable("");
 
     obj.played_card_post_data = ko.observable({"played_by":"","card_played":"","card_chosen":"","player_chosen":""})
+    obj.player_chosen = ko.observable("");
+    obj.card_chosen = ko.observable("")
+
     obj.card_list = ko.observableArray([
     {"name": "Guard","img":"assets/images/Guard.png"},
     {"name": "Preist","img":"assets/images/Preist.png"},
@@ -110,11 +113,13 @@ function game_model(obj)
     {
         console.log(data)
         obj.played_card_post_data()["player_chosen"] = (data["name"])
+        obj.player_chosen(data["name"]);
     }
     self.choose_card = function(data)
     {
         console.log(data)
         obj.played_card_post_data()["card_chosen"] = (data["name"])
         console.log(obj.played_card_post_data());
+        obj.card_chosen(data["name"]);
     }
 }
