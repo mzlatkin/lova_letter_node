@@ -14,6 +14,16 @@ function game_model(obj)
     obj.picked_up_card = ko.observable("");
     obj.card_played_this_turn = ko.observable("");
 
+    obj.card_list = ko.observableArray([
+    {"name": "Guard","img":"assets/images/Guard.png"},
+    {"name": "Preist","img":"assets/images/Preist.png"},
+    {"name": "Barron","img":"assets/images/Barron.png"},
+    {"name": "Hand Maiden","img":"assets/images/Hand_Maiden.png"},
+    {"name": "Prince","img":"assets/images/Prince.png"},
+    {"name": "King","img":"assets/images/King.png"},
+    {"name": "Countess","img":"assets/images/Countess.png"},
+    {"name": "Princess","img":"assets/images/Princess.png"}])
+
     obj.choosing_card = ko.observable(false);
 
     socket.on("game_update", function(data) {

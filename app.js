@@ -27,7 +27,6 @@ var server = http.createServer(function(request, response) {
     }
     else if (request.url.indexOf('.png') != -1)
     {
-        console.log(request.url)
         fs.readFile("./" + request.url, function (error, data) {
             response.writeHead(200, {'Content-Type': 'image/png'});
             response.end(data);
