@@ -107,12 +107,12 @@ function game_model(obj)
         console.log(obj.server_rooms())
     })
 
-    self.choose_player = function(index)
+    self.choose_player = function(data)
     {
-        console.log(index())
+        console.log(data)
     }
-    self.choose_card = function(index)
+    self.choose_card = function(data)
     {
-        console.log(index())
+        console.log(data)
     }
 }
