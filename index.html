@@ -122,10 +122,8 @@
                                                 <span data-bind="text: name"></span>
                                             </div>
                                     </div>
-                                    <div class="col-xs-12">
-                                        <div data-bind="foreach: card_list()">
-                                            <img class="col-xs-2" data-bind="attr: { src: img }" ></img>
-                                        </div>
+                                    <div class="col-xs-12" data-bind="foreach: card_list()">
+                                        <img class="col-xs-2" data-bind="attr: { src: img }" ></img>
                                     </div>
                                     <button type="button" class="btn btn-primary" data-bind="click: card_intraction">
                                         play Card
