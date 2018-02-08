@@ -110,9 +110,12 @@ function game_model(obj)
     self.choose_player = function(data)
     {
         console.log(data)
+        obj.played_card_post_data()["player_chosen"] = data["name"]
     }
     self.choose_card = function(data)
     {
         console.log(data)
+        obj.played_card_post_data()["card_chosen"] = data["name"]
+        console.log(obj.played_card_post_data());
     }
 }
