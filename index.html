@@ -119,7 +119,7 @@
                                         <span> do Guard things</span>
                                         <div class="row">
                                             <div class="col-xs-12" data-bind="foreach: players_in_the_room()">
-                                                <div class="col-xs-3" data-bind="click: function(){choose_player($data)}">
+                                                <div class="col-xs-3" data-bind="click: function(){choose_player($data)}, css: { turn_background: (name == $parent.played_card_post_data.name) ">
                                                     <span data-bind="text: name"></span>
                                                 </div>
                                             </div>
