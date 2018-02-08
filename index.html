@@ -117,14 +117,16 @@
                                     </div>
                                     <!-- ko if: card_played_this_turn().name == "Guard" -->
                                         <span> do Guard things</span>
-                                        <div class="col-xs-12" data-bind="foreach: players_in_the_room()">
-                                            
-                                                <div class="col-xs-3" data-bind="css: { turn_background: (name == $parent.current_player()) }">
-                                                    <span data-bind="text: name"></span>
-                                                </div>
-                                        </div>
-                                        <div class="col-xs-12" data-bind="foreach: card_list()">
-                                            <img class="col-xs-3" data-bind="attr: { src: img }" ></img>
+                                        <div class="row">
+                                            <div class="col-xs-12" data-bind="foreach: players_in_the_room()">
+                                                
+                                                    <div class="col-xs-3" data-bind="css: { turn_background: (name == $parent.current_player()) }">
+                                                        <span data-bind="text: name"></span>
+                                                    </div>
+                                            </div>
+                                            <div class="col-xs-12" data-bind="foreach: card_list()">
+                                                <img class="col-xs-3" data-bind="attr: { src: img }" ></img>
+                                            </div>
                                         </div>
                                         <button type="button" class="btn btn-primary" data-bind="click: card_intraction">
                                             play Card
