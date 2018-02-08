@@ -116,12 +116,11 @@
                                 </div>
                                 <!-- ko if: card_played_this_turn().name == "Guard" -->
                                     <span> do Guard things</span>
-                                    <div class="col-xs-12">
-                                        <div data-bind="foreach: players_in_the_room()">
+                                    <div class="col-xs-12" data-bind="foreach: players_in_the_room()">
+                                        
                                             <div class="col-xs-3" data-bind="css: { turn_background: (name == $parent.current_player()) }">
                                                 <span data-bind="text: name"></span>
                                             </div>
-                                        </div>
                                     </div>
                                     <div class="col-xs-12">
                                         <div data-bind="foreach: card_list()">
