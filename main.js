@@ -109,10 +109,10 @@ function game_model(obj)
 
     self.choose_player = function(index)
     {
-        console.log(index)
+        console.log(index())
     }
     self.choose_card = function(index)
     {
-        console.log(index)
+        console.log(index())
     }
 }
