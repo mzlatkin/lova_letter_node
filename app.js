@@ -79,8 +79,11 @@ socket.on("connection", function (client) {
                         SERVER_ROOMS[i]["people"][k]["card_in_hand"] = data["card"]["card_kept"];
                         console.log(SERVER_ROOMS[i]["people"][k]);
                     }
-                    if (data["card"]["card_played"] == "Guard")
-                    {
+                }
+
+                if (data["card"]["card_played"] == "Guard")
+                {
+                    for (var k = 0; k < SERVER_ROOMS[i]["people"].length; k++) {
                         if (SERVER_ROOMS[i]["people"][k]["name"] == data["card"]["player_chosen"])
                         {
                             if (SERVER_ROOMS[i]["people"][k]["card_in_hand"]["name"] == data["card"]["card_chosen"])
@@ -90,35 +93,106 @@ socket.on("connection", function (client) {
                             }
                         }
                     }
-                    else if (data["card"]["card_played"] == "Preist")
-                    {
-
-                    }
-                    else if (data["card"]["card_played"] == "Barron")
-                    {
-
-                    }
-                    else if (data["card"]["card_played"] == "Hand Maiden")
-                    {
-
-                    }
-                    else if (data["card"]["card_played"] == "Prince")
-                    {
-
-                    }
-                    else if (data["card"]["card_played"] == "King")
-                    {
-
-                    }
-                    else if (data["card"]["card_played"] == "Countess")
-                    {
-
-                    }
-                    else if (data["card"]["card_played"] == "Princess")
-                    {
-
-                    }                    
                 }
+                else if (data["card"]["card_played"] == "Preist")
+                {
+                    for (var k = 0; k < SERVER_ROOMS[i]["people"].length; k++) {
+                        if (SERVER_ROOMS[i]["people"][k]["name"] == data["card"]["player_chosen"])
+                        {
+                            console.log(SERVER_ROOMS[i]["people"][k]["name"] + " is holding " + SERVER_ROOMS[i]["people"][k]["card_in_hand"]["name"]);
+                        }
+                    }
+                }
+                else if (data["card"]["card_played"] == "Barron")
+                {
+                    var player;
+                    var playee;
+                    for (var k = 0; k < SERVER_ROOMS[i]["people"].length; k++) {
+                        if (SERVER_ROOMS[i]["people"][k]["name"] == data["card"]["player_chosen"])
+                        {
+                            playee = SERVER_ROOMS[i]["people"][k]
+                        }
+                        if (SERVER_ROOMS[i]["people"][k]["name"] == data["card"]["played_by"])
+                        {
+                            player = SERVER_ROOMS[i]["people"][k]
+                        }
+                    }
+                    if (player["card_in_hand"]["value"]>playee["card_in_hand"]["value"])
+                    {
+                        console.log(player["name"]+ " wins, "+ playee["name"]+ " is eliminated");
+                        playee["eliminated"] = true;
+                    }
+                    else if (playee["card_in_hand"]["value"]>player["card_in_hand"]["value"])
+                    {
+                        console.log(playee["name"]+ " wins, "+ player["name"]+ " is eliminated");
+                        player["eliminated"] = true;
+                    }
+                    else{
+                        console.log("tie");
+                    }
+
+                }
+                else if (data["card"]["card_played"] == "Hand Maiden")
+                {
+
+                }
+                else if (data["card"]["card_played"] == "Prince")
+                {
+                    for (var k = 0; k < SERVER_ROOMS[i]["people"].length; k++) {
+                        if (SERVER_ROOMS[i]["people"][k]["name"] == data["card"]["player_chosen"])
+                        {
+                            SERVER_ROOMS[i]["people"][k]["discard_array"].push(SERVER_ROOMS[i]["people"][k]["card_in_hand"]);
+                            if(SERVER_ROOMS[i]["CARD_LIST"]["cards"].length>0)
+                            {
+                                var num = Math.floor(Math.random()*SERVER_ROOMS[i]["CARD_LIST"]["cards"].length);
+                                var card = SERVER_ROOMS[i]["CARD_LIST"]["cards"].splice(num,1);
+                                SERVER_ROOMS[i]["people"][k]["card_in_hand"] = card[0]
+                            }
+                            else
+                            {
+                                SERVER_ROOMS[i]["people"][k]["card_in_hand"] = SERVER_ROOMS[i]["last_card"]
+                            }
+                        }
+                    }
+                }
+                else if (data["card"]["card_played"] == "King")
+                {
+                    var player_card;
+                    var playee_card;
+                    for (var k = 0; k < SERVER_ROOMS[i]["people"].length; k++) {
+                        if (SERVER_ROOMS[i]["people"][k]["name"] == data["card"]["player_chosen"])
+                        {
+                            playee_card = SERVER_ROOMS[i]["people"][k]["card_in_hand"]
+                        }
+                        if (SERVER_ROOMS[i]["people"][k]["name"] == data["card"]["played_by"])
+                        {
+                            player_card = SERVER_ROOMS[i]["people"][k]["card_in_hand"]
+                        }
+                    }
+                    for (var k = 0; k < SERVER_ROOMS[i]["people"].length; k++) {
+                        if (SERVER_ROOMS[i]["people"][k]["name"] == data["card"]["player_chosen"])
+                        {
+                            SERVER_ROOMS[i]["people"][k]["card_in_hand"] = player_card;
+                        }
+                        if (SERVER_ROOMS[i]["people"][k]["name"] == data["card"]["played_by"])
+                        {
+                            SERVER_ROOMS[i]["people"][k]["card_in_hand"] = playee_card;
+                        }
+                    }
+                }
+                else if (data["card"]["card_played"] == "Countess")
+                {
+
+                }
+                else if (data["card"]["card_played"] == "Princess")
+                {
+                    for (var k = 0; k < SERVER_ROOMS[i]["people"].length; k++) {
+                        if (SERVER_ROOMS[i]["people"][k]["name"] == data["card"]["played_by"])
+                        {
+                            SERVER_ROOMS[i]["people"][k]["eliminated"] = true;
+                        }
+                    }
+                }        
 
                 if (SERVER_ROOMS[i]["CARD_LIST"]["cards"].length == 0)
                 {
@@ -164,7 +238,7 @@ socket.on("connection", function (client) {
                 SERVER_ROOMS[i]["game_started"] = true;
                 // remove one card from play
                 var num = Math.floor(Math.random()*SERVER_ROOMS[i]["CARD_LIST"]["cards"].length);
-                SERVER_ROOMS[i]["last_card"] = SERVER_ROOMS[i]["CARD_LIST"]["cards"].splice(num,1);
+                SERVER_ROOMS[i]["last_card"] = SERVER_ROOMS[i]["CARD_LIST"]["cards"].splice(num,1)[0];
 
                 cards_drawn = []
 
