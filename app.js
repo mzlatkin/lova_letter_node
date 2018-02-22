@@ -129,6 +129,7 @@ socket.on("connection", function (client) {
                     num = Math.floor(Math.random()*SERVER_ROOMS[i]["CARD_LIST"]["cards"].length);
                     card = SERVER_ROOMS[i]["CARD_LIST"]["cards"].splice(num,1);
                     cards_drawn.push(card)
+                    SERVER_ROOMS[i]["people"][k]["card_in_hand"] = card;
                 };
                 socket.in(data["room"]).emit("starting_hands", cards_drawn);
             }
