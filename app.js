@@ -77,7 +77,6 @@ socket.on("connection", function (client) {
                     {
                         SERVER_ROOMS[i]["people"][k]["discard_array"].push(data["card"]["card_played"]);
                         SERVER_ROOMS[i]["people"][k]["card_in_hand"] = data["card"]["card_kept"];
-                        console.log(SERVER_ROOMS[i]["people"][k]);
                     }
                 }
 
