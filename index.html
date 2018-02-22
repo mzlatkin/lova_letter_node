@@ -116,7 +116,6 @@
                                         </p>
                                     </div>
                                     <!-- ko if: card_played_this_turn().name == "Guard" -->
-                                        <span> do Guard things</span>
                                         <div class="row">
                                             <div class="col-xs-12" data-bind="foreach: players_in_the_room()">
                                                 <div class="col-xs-3" data-bind="click: function(){choose_player($data)}, css: { turn_background: (name == $parent.player_chosen())} ">
@@ -133,12 +132,26 @@
                                     <!-- /ko -->
                                     <!-- ko if: card_played_this_turn().name == "Preist" -->
                                         <span> do Preist things</span>
+                                        <div class="row">
+                                            <div class="col-xs-12" data-bind="foreach: players_in_the_room()">
+                                                <div class="col-xs-3" data-bind="click: function(){choose_player($data)}, css: { turn_background: (name == $parent.player_chosen())} ">
+                                                    <span data-bind="text: name"></span>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <button type="button" class="btn btn-primary" data-bind="click: card_intraction">
                                             play Card
                                         </button>
                                     <!-- /ko -->
                                     <!-- ko if: card_played_this_turn().name == "Barron" -->
                                         <span> do Barron things</span>
+                                        <div class="row">
+                                            <div class="col-xs-12" data-bind="foreach: players_in_the_room()">
+                                                <div class="col-xs-3" data-bind="click: function(){choose_player($data)}, css: { turn_background: (name == $parent.player_chosen())} ">
+                                                    <span data-bind="text: name"></span>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <button type="button" class="btn btn-primary" data-bind="click: card_intraction">
                                             play Card
                                         </button>
@@ -151,18 +164,31 @@
                                     <!-- /ko -->
                                     <!-- ko if: card_played_this_turn().name == "Prince" -->
                                         <span> do Prince things</span>
+                                        <div class="row">
+                                            <div class="col-xs-12" data-bind="foreach: players_in_the_room()">
+                                                <div class="col-xs-3" data-bind="click: function(){choose_player($data)}, css: { turn_background: (name == $parent.player_chosen())} ">
+                                                    <span data-bind="text: name"></span>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <button type="button" class="btn btn-primary" data-bind="click: card_intraction">
                                             play Card
                                         </button>
                                     <!-- /ko -->
                                     <!-- ko if: card_played_this_turn().name == "King" -->
                                         <span> do King things</span>
+                                        <div class="row">
+                                            <div class="col-xs-12" data-bind="foreach: players_in_the_room()">
+                                                <div class="col-xs-3" data-bind="click: function(){choose_player($data)}, css: { turn_background: (name == $parent.player_chosen())} ">
+                                                    <span data-bind="text: name"></span>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <button type="button" class="btn btn-primary" data-bind="click: card_intraction">
                                             play Card
                                         </button>
                                     <!-- /ko -->
                                     <!-- ko if: card_played_this_turn().name == "Countess" -->  
-                                        <span> do Countess things</span>
                                         <button type="button" class="btn btn-primary" data-bind="click: card_intraction">
                                             play Card
                                         </button>
