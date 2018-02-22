@@ -80,7 +80,7 @@ socket.on("connection", function (client) {
                     }
                 }
 
-                if (data["card"]["card_played"] == "Guard")
+                if (data["card"]["card_played"]["name"] == "Guard")
                 {
                     for (var k = 0; k < SERVER_ROOMS[i]["people"].length; k++) {
                         if (SERVER_ROOMS[i]["people"][k]["name"] == data["card"]["player_chosen"])
@@ -93,7 +93,7 @@ socket.on("connection", function (client) {
                         }
                     }
                 }
-                else if (data["card"]["card_played"] == "Preist")
+                else if (data["card"]["card_played"]["name"] == "Preist")
                 {
                     for (var k = 0; k < SERVER_ROOMS[i]["people"].length; k++) {
                         if (SERVER_ROOMS[i]["people"][k]["name"] == data["card"]["player_chosen"])
@@ -102,7 +102,7 @@ socket.on("connection", function (client) {
                         }
                     }
                 }
-                else if (data["card"]["card_played"] == "Barron")
+                else if (data["card"]["card_played"]["name"] == "Barron")
                 {
                     var player;
                     var playee;
@@ -131,11 +131,11 @@ socket.on("connection", function (client) {
                     }
 
                 }
-                else if (data["card"]["card_played"] == "Hand Maiden")
+                else if (data["card"]["card_played"]["name"] == "Hand Maiden")
                 {
 
                 }
-                else if (data["card"]["card_played"] == "Prince")
+                else if (data["card"]["card_played"]["name"] == "Prince")
                 {
                     for (var k = 0; k < SERVER_ROOMS[i]["people"].length; k++) {
                         if (SERVER_ROOMS[i]["people"][k]["name"] == data["card"]["player_chosen"])
@@ -154,7 +154,7 @@ socket.on("connection", function (client) {
                         }
                     }
                 }
-                else if (data["card"]["card_played"] == "King")
+                else if (data["card"]["card_played"]["name"] == "King")
                 {
                     var player_card;
                     var playee_card;
@@ -179,11 +179,11 @@ socket.on("connection", function (client) {
                         }
                     }
                 }
-                else if (data["card"]["card_played"] == "Countess")
+                else if (data["card"]["card_played"]["name"] == "Countess")
                 {
 
                 }
-                else if (data["card"]["card_played"] == "Princess")
+                else if (data["card"]["card_played"]["name"] == "Princess")
                 {
                     for (var k = 0; k < SERVER_ROOMS[i]["people"].length; k++) {
                         if (SERVER_ROOMS[i]["people"][k]["name"] == data["card"]["played_by"])
