@@ -6,7 +6,7 @@ var index;
 
 //bad form, using the same object >:(
 var CARD_LIST = JSON.parse(fs.readFileSync('assets/models/cards.json', 'utf8'));
-var SERVER_ROOMS = [{"name":"room 1","people":[],CARD_LIST,"turn":1,"game_started":false},{"name":"room 2","people":[],CARD_LIST,"turn":1,"game_started":false}]
+var SERVER_ROOMS = [{"name":"room 1","people":[],CARD_LIST,"turn":1,"game_started":false}]
 
 var server = http.createServer(function(request, response) {
     if (request.url.indexOf('.js') != -1)
@@ -91,6 +91,7 @@ socket.on("connection", function (client) {
         for (var i = 0; i < SERVER_ROOMS.length; i++) {
             if (SERVER_ROOMS[i]["name"] == room)
             {
+                console.log(SERVER_ROOMS[i]["CARD_LIST"]["cards"].length);
                 // console.log(SERVER_ROOMS[i]["CARD_LIST"]["cards"])
                 var num = Math.floor(Math.random()*SERVER_ROOMS[i]["CARD_LIST"]["cards"].length);
                 var card = SERVER_ROOMS[i]["CARD_LIST"]["cards"].splice(num,1);
@@ -106,7 +107,7 @@ socket.on("connection", function (client) {
                 SERVER_ROOMS[i]["game_started"] = true;
                 // remove one card from play
                 var num = Math.floor(Math.random()*SERVER_ROOMS[i]["CARD_LIST"]["cards"].length);
-                SERVER_ROOMS[i]["side_card"] = SERVER_ROOMS[i]["CARD_LIST"]["cards"].splice(num,1);
+                SERVER_ROOMS[i]["last_card"] = SERVER_ROOMS[i]["CARD_LIST"]["cards"].splice(num,1);
 
                 cards_drawn = []
 
