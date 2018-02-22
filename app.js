@@ -68,18 +68,22 @@ socket.on("connection", function (client) {
     });
 
     client.on("play_card", function(data){
+        console.log("played card");
+        console.log(data);
         for (var i = 0; i < SERVER_ROOMS.length; i++) {
             if (SERVER_ROOMS[i]["name"] == data["room"])
             {
+                for (var k = 0; k < SERVER_ROOMS[i]["people"].length; k++) {
+                    console.log(SERVER_ROOMS[i]["people"][k])
+                }
+
                 if (SERVER_ROOMS[i]["CARD_LIST"]["cards"].length == 0)
                 {
                     socket.in(room).emit("game_over","");  
                 }
+
             }
         }
-        
-        console.log("played card");
-        console.log(data);
     });
 
     client.on("end_turn", function(room){
