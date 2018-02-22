@@ -68,6 +68,15 @@ socket.on("connection", function (client) {
     });
 
     client.on("play_card", function(data){
+        for (var i = 0; i < SERVER_ROOMS.length; i++) {
+            if (SERVER_ROOMS[i]["name"] == data["room"])
+            {
+                if (SERVER_ROOMS[i]["CARD_LIST"]["cards"].length == 0)
+                {
+                    socket.in(room).emit("game_over","");  
+                }
+            }
+        }
         console.log("played card");
         console.log(data);
     });
@@ -94,15 +103,8 @@ socket.on("connection", function (client) {
                 // console.log(SERVER_ROOMS[i]["CARD_LIST"]["cards"])
                 var num = Math.floor(Math.random()*SERVER_ROOMS[i]["CARD_LIST"]["cards"].length);
                 var card = SERVER_ROOMS[i]["CARD_LIST"]["cards"].splice(num,1);
-                if (SERVER_ROOMS[i]["CARD_LIST"]["cards"].length != 0)
-                {
-                    client.emit("client_update", {"card":card[0]});
-                }
-                else
-                {
-                    socket.in(room).emit("game_over","");  
-                }
-                
+
+                client.emit("client_update", {"card":card[0]});                
             }
         };
     });
