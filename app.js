@@ -100,7 +100,7 @@ socket.on("connection", function (client) {
                 }
                 else
                 {
-                    socket.in(room).emit("game_over");  
+                    socket.in(room).emit("game_over","");  
                 }
                 
             }
