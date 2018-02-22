@@ -7,7 +7,7 @@
         <!-- socket.io -->
         <script src="/socket.io/socket.io.js"></script>
         <script>
-            var socket = io.connect("192.168.0.26:8080");
+            var socket = io.connect("192.168.0.28:8080");
         </script>
 
         <!-- knockout -->
@@ -121,7 +121,6 @@
                                             <div class="col-xs-12" data-bind="foreach: players_in_the_room()">
                                                 <div class="col-xs-3" data-bind="click: function(){choose_player($data)}, css: { turn_background: (name == $parent.player_chosen())} ">
                                                     <span data-bind="text: name"></span>
-                                                    <span data-bind="text: $parent.player_chosen"></span>
                                                 </div>
                                             </div>
                                             <div class="col-xs-12" data-bind="foreach: card_list()">
