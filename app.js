@@ -75,6 +75,21 @@ socket.on("connection", function (client) {
             {
                 for (var k = 0; k < SERVER_ROOMS[i]["people"].length; k++) {
                     console.log(SERVER_ROOMS[i]["people"][k])
+                    if (SERVER_ROOMS[i]["people"][k]["name"] == data["card"]["played_by"])
+                    {
+                        SERVER_ROOMS[i]["people"][k]["discard_array"].push(data["card"]["card_played"])
+                    }
+                    if (SERVER_ROOMS[i]["people"][k]["name"] == data["card"]["player_chosen"])
+                    {
+                        if (SERVER_ROOMS[i]["people"][k]["card_in_hand"]["name"] == data["card"]["card_chosen"])
+                        {
+                            console.log("you chose correctly");
+                        }
+                        else{
+                            console.log("you did not choos correctly");
+                        }
+                        
+                    }
                 }
 
                 if (SERVER_ROOMS[i]["CARD_LIST"]["cards"].length == 0)
@@ -129,7 +144,7 @@ socket.on("connection", function (client) {
                     num = Math.floor(Math.random()*SERVER_ROOMS[i]["CARD_LIST"]["cards"].length);
                     card = SERVER_ROOMS[i]["CARD_LIST"]["cards"].splice(num,1);
                     cards_drawn.push(card)
-                    SERVER_ROOMS[i]["people"][k]["card_in_hand"] = card;
+                    SERVER_ROOMS[i]["people"][k]["card_in_hand"] = card[0];
                 };
                 socket.in(data["room"]).emit("starting_hands", cards_drawn);
             }
