@@ -30,6 +30,10 @@ function game_model(obj)
 
     obj.choosing_card = ko.observable(false);
 
+    socket.on("game_over" {
+        alert("game over");
+    });
+
     socket.on("game_update", function(data) {
         obj.players_in_the_room(data["people"]);
         if(obj.player_number() == "")

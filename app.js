@@ -97,7 +97,15 @@ socket.on("connection", function (client) {
                 var num = Math.floor(Math.random()*SERVER_ROOMS[i]["CARD_LIST"]["cards"].length);
                 var card = SERVER_ROOMS[i]["CARD_LIST"]["cards"].splice(num,1);
                 console.log(card);
-                client.emit("client_update", {"card":card[0]});
+                if (SERVER_ROOMS[i]["CARD_LIST"]["cards"].length != 0)
+                {
+                    client.emit("client_update", {"card":card[0]});
+                }
+                else
+                {
+                    socket.in(room).emit("game_over");  
+                }
+                
             }
         };
     });
