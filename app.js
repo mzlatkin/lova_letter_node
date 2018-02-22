@@ -92,9 +92,11 @@ socket.on("connection", function (client) {
             if (SERVER_ROOMS[i]["name"] == room)
             {
                 console.log(SERVER_ROOMS[i]["CARD_LIST"]["cards"].length);
+                console.log(SERVER_ROOMS[i]["CARD_LIST"]["cards"]);
                 // console.log(SERVER_ROOMS[i]["CARD_LIST"]["cards"])
                 var num = Math.floor(Math.random()*SERVER_ROOMS[i]["CARD_LIST"]["cards"].length);
                 var card = SERVER_ROOMS[i]["CARD_LIST"]["cards"].splice(num,1);
+                console.log(card);
                 client.emit("client_update", {"card":card[0]});
             }
         };
