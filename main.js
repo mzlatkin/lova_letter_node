@@ -32,6 +32,7 @@ function game_model(obj)
 
     socket.on("game_over", function(data) {
         alert("game over");
+        
     });
 
     socket.on("game_update", function(data) {
