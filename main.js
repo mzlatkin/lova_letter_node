@@ -103,7 +103,7 @@ function game_model(obj)
     {
         console.log(obj.card_played_this_turn())
         console.log(obj.players_in_the_room())
-        socket.emit("play_card", {"room":obj.current_room_name(),"card":card_played});
+        socket.emit("play_card", {"room":obj.current_room_name(),"card":obj.played_card_post_data()});
     }
 
     self.end_turn = function()
