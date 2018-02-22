@@ -32,7 +32,6 @@ function game_model(obj)
 
     socket.on("game_over", function(data) {
         alert("game over");
-        
     });
 
     socket.on("game_update", function(data) {
@@ -43,10 +42,11 @@ function game_model(obj)
         	obj.player_number(data["people"].length);
         }
         obj.current_player(data["people"][(data["turn"]-1)]["name"]);
+
         if (obj.player_number() == data["turn"])
         {
-
         	obj.your_turn(true);
+            console.log(data["people"][(data["turn"]-1)])
         }
         else
         {
@@ -77,6 +77,7 @@ function game_model(obj)
         obj.current_room_name(room["name"]);
         socket.emit("join_room", {"room":room["name"],"username":obj.username()});
     }
+
     self.start_game = function()
     {
         console.log("called start game");
