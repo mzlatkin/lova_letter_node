@@ -47,7 +47,7 @@ function game_model(obj)
         {
         	obj.your_turn(true);
             if (data["people"][(data["turn"]-1)]["eliminated"] == false){
-                obj.end_turn();
+                end_turn();
             }
         }
         else
