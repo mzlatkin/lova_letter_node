@@ -77,6 +77,7 @@ socket.on("connection", function (client) {
                 }
             }
         }
+        
         console.log("played card");
         console.log(data);
     });
