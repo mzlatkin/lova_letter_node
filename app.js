@@ -76,7 +76,7 @@ socket.on("connection", function (client) {
                     if (SERVER_ROOMS[i]["people"][k]["name"] == data["card"]["played_by"])
                     {
                         SERVER_ROOMS[i]["people"][k]["discard_array"].push(data["card"]["card_played"])
-                        SERVER_ROOMS[i]["people"][k]["card_in_hand"].push(data["card"]["card_kept"])
+                        SERVER_ROOMS[i]["people"][k]["card_in_hand"] = data["card"]["card_kept"]
                         SERVER_ROOMS[i]["people"][k]
                     }
                     if (data["card"]["card_played"] == "Guard")
