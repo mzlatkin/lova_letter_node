@@ -68,13 +68,11 @@ socket.on("connection", function (client) {
     });
 
     client.on("play_card", function(data){
-        console.log("played card");
         console.log(data);
         for (var i = 0; i < SERVER_ROOMS.length; i++) {
             if (SERVER_ROOMS[i]["name"] == data["room"])
             {
                 for (var k = 0; k < SERVER_ROOMS[i]["people"].length; k++) {
-                    console.log(SERVER_ROOMS[i]["people"][k])
                     if (SERVER_ROOMS[i]["people"][k]["name"] == data["card"]["played_by"])
                     {
                         SERVER_ROOMS[i]["people"][k]["discard_array"].push(data["card"]["card_played"])
