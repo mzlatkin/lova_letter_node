@@ -102,8 +102,14 @@ function game_model(obj)
 
     self.card_intraction = function()
     {
-        obj.played_card_post_data()["played_by"] = (obj.username());
+        obj.played_card_post_data()["played_by"] = obj.username();
+        obj.played_card_post_data()["card_kept"] = obj.card_in_hand();
         socket.emit("play_card", {"room":obj.current_room_name(),"card":obj.played_card_post_data()});
+
+        obj.played_card_post_data()["player_chosen"] = ""
+        obj.player_chosen("");
+        obj.played_card_post_data()["card_chosen"] = ""
+        obj.card_chosen("");
     }
 
     self.end_turn = function()

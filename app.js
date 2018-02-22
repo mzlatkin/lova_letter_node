@@ -83,12 +83,9 @@ socket.on("connection", function (client) {
                     {
                         if (SERVER_ROOMS[i]["people"][k]["card_in_hand"]["name"] == data["card"]["card_chosen"])
                         {
-                            console.log("you chose correctly");
+                            console.log(SERVER_ROOMS[i]["people"][k]["card_in_hand"]["name"] + " has been eliminated");
+                            SERVER_ROOMS[i]["people"][k]["eliminated"] = true;
                         }
-                        else{
-                            console.log("you did not choos correctly");
-                        }
-                        
                     }
                 }
 
