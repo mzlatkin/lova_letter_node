@@ -68,7 +68,7 @@ socket.on("connection", function (client) {
     });
 
     client.on("play_card", function(data){
-        console.log(data);
+        // console.log(data);
         for (var i = 0; i < SERVER_ROOMS.length; i++) {
             if (SERVER_ROOMS[i]["name"] == data["room"])
             {
@@ -76,15 +76,48 @@ socket.on("connection", function (client) {
                     if (SERVER_ROOMS[i]["people"][k]["name"] == data["card"]["played_by"])
                     {
                         SERVER_ROOMS[i]["people"][k]["discard_array"].push(data["card"]["card_played"])
+                        SERVER_ROOMS[i]["people"][k]["card_in_hand"].push(data["card"]["card_kept"])
+                        SERVER_ROOMS[i]["people"][k]
                     }
-                    if (SERVER_ROOMS[i]["people"][k]["name"] == data["card"]["player_chosen"])
+                    if (data["card"]["card_played"] == "Guard")
                     {
-                        if (SERVER_ROOMS[i]["people"][k]["card_in_hand"]["name"] == data["card"]["card_chosen"])
+                        if (SERVER_ROOMS[i]["people"][k]["name"] == data["card"]["player_chosen"])
                         {
-                            console.log(SERVER_ROOMS[i]["people"][k]["card_in_hand"]["name"] + " has been eliminated");
-                            SERVER_ROOMS[i]["people"][k]["eliminated"] = true;
+                            if (SERVER_ROOMS[i]["people"][k]["card_in_hand"]["name"] == data["card"]["card_chosen"])
+                            {
+                                console.log(SERVER_ROOMS[i]["people"][k]["name"] + " has been eliminated");
+                                SERVER_ROOMS[i]["people"][k]["eliminated"] = true;
+                            }
                         }
                     }
+                    else if (data["card"]["card_played"] == "Preist")
+                    {
+
+                    }
+                    else if (data["card"]["card_played"] == "Barron")
+                    {
+
+                    }
+                    else if (data["card"]["card_played"] == "Hand Maiden")
+                    {
+
+                    }
+                    else if (data["card"]["card_played"] == "Prince")
+                    {
+
+                    }
+                    else if (data["card"]["card_played"] == "King")
+                    {
+
+                    }
+                    else if (data["card"]["card_played"] == "Countess")
+                    {
+
+                    }
+                    else if (data["card"]["card_played"] == "Princess")
+                    {
+
+                    }                    
                 }
 
                 if (SERVER_ROOMS[i]["CARD_LIST"]["cards"].length == 0)
