@@ -83,6 +83,9 @@
                                 <div data-bind="foreach: players_in_the_room()">
                                     <!-- ko if: $index() == 0 -->
                                         <span data-bind="text: name"></span>
+                                        <div data-bind="foreach: discard_array()">
+                                            <span data-bind="text: name"></span>
+                                        </div>
                                     <!-- /ko -->
                                 </div>
                             </div>
