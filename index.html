@@ -60,11 +60,13 @@
                                         Start Game
                                     </button>
                                 <!-- /ko -->
-                                <form class="form-inline">
-                                    <button type="button" class="btn btn-primary" data-bind="click: draw_card" data-toggle="modal" data-target="#exampleModal">
-                                        Draw card
-                                    </button>
-                                </form>
+                                <!-- ko if: card_in_hand() != "" -->
+                                    <form class="form-inline">
+                                        <button type="button" class="btn btn-primary" data-bind="click: draw_card" data-toggle="modal" data-target="#exampleModal">
+                                            Draw card
+                                        </button>
+                                    </form>
+                                <!-- /ko -->
                             </div>
                         </div>
                     </div>
