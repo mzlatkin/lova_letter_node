@@ -33,3 +33,13 @@ body {
 .turn_background{
     background-color: #ccac4f;
 }
+
+.player-space{
+    background-color: green;
+    border: solid blue 1px;
+    height: 33%;
+}
+
+.play-space{
+    height: 100%;
+}
