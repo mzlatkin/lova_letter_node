@@ -206,7 +206,7 @@
                                                 <img class="col-xs-3" data-bind="click: function(){choose_card($data)}, attr: { src: img }, css: { turn_background: (name == $parent.card_chosen())}" ></img>
                                             </div>
                                         </div>
-                                        <button type="button" class="btn btn-primary" data-bind="click: card_intraction">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal" data-bind="click: card_intraction">
                                             play Card
                                         </button>
                                     <!-- /ko -->
@@ -219,7 +219,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="button" class="btn btn-primary" data-bind="click: card_intraction">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal" data-bind="click: card_intraction">
                                             play Card
                                         </button>
                                     <!-- /ko -->
@@ -232,13 +232,13 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="button" class="btn btn-primary" data-bind="click: card_intraction">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal" data-bind="click: card_intraction">
                                             play Card
                                         </button>
                                     <!-- /ko -->
                                     <!-- ko if: card_played_this_turn().name == "Hand Maiden" -->
                                         <span> do Hand Maiden things</span>
-                                        <button type="button" class="btn btn-primary" data-bind="click: card_intraction">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal" data-bind="click: card_intraction">
                                             play Card
                                         </button>
                                     <!-- /ko -->
@@ -251,7 +251,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="button" class="btn btn-primary" data-bind="click: card_intraction">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal" data-bind="click: card_intraction">
                                             play Card
                                         </button>
                                     <!-- /ko -->
@@ -264,18 +264,18 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="button" class="btn btn-primary" data-bind="click: card_intraction">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal" data-bind="click: card_intraction">
                                             play Card
                                         </button>
                                     <!-- /ko -->
                                     <!-- ko if: card_played_this_turn().name == "Countess" -->  
-                                        <button type="button" class="btn btn-primary" data-bind="click: card_intraction">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal" data-bind="click: card_intraction">
                                             play Card
                                         </button>
                                     <!-- /ko -->
                                     <!-- ko if: card_played_this_turn().name == "Princess" -->
                                         <span>you lose</span>
-                                        <button type="button" class="btn btn-primary" data-bind="click: card_intraction">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal" data-bind="click: card_intraction">
                                             play Card
                                         </button>
                                     <!-- /ko -->
