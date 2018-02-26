@@ -36,6 +36,7 @@ function game_model(obj)
 
     socket.on("game_update", function(data) {
         obj.players_in_the_room(data["people"]);
+        console.log(obj.players_in_the_room());
         if(obj.player_number() == "")
         {
             obj.joined(true);
