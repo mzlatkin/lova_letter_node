@@ -119,7 +119,7 @@ function game_model(obj)
         obj.player_chosen("");
         obj.played_card_post_data()["card_chosen"] = ""
         obj.card_chosen("");
-        obj.end_turn();
+        self.end_turn();
     }
 
     self.end_turn = function()
