@@ -78,14 +78,32 @@
                         </div>
                     </div>
                     <!-- ko if: card_in_hand() != "" -->
-                        <span data-bind="text: player_number"></span>
-                        <!-- ko if: player_number() == 1 -->
-                            <span>you are player 1</span>
-                        <!-- /ko -->
-                        <!-- ko if: player_number() == 2 -->
-                            <span>you are player 2</span>
-                        <!-- /ko -->
                         <div class"row">
+                            <!-- ko if: player_number() == 1 -->
+                                <div data-bind="foreach: players_in_the_room()">
+                                    <!-- ko if: $index() == 1 -->
+                                        <div class="col-xs-6 player-space">
+                                            <div>
+                                                <div class="col-xs-6">
+                                                    <p>
+                                                        <img class="card-format" data-bind="attr: { src: 'assets/images/card_back.png' }"></img>
+                                                    </p>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div data-bind="foreach: discard_array">
+                                                        <div class="card-wrapper">
+                                                            <img class="card-format" data-bind="attr: { src: img }"></img>
+                                                        </div>
+                                                    </div>     
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <!-- /ko -->
+                                </div>
+                            <!-- /ko -->
+                            <!-- ko if: player_number() == 2 -->
+                                <span>you are player 2</span>
+                            <!-- /ko -->
                             <div class="col-xs-6 col-xs-offset-3 player-space">
                                 <div data-bind="foreach: players_in_the_room()">
                                     <!-- ko if: $index() == 0 -->
