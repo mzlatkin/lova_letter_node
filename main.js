@@ -19,7 +19,6 @@ function game_model(obj)
     obj.card_chosen = ko.observable("")
 
     obj.card_list = ko.observableArray([
-    {"name": "Guard","img":"assets/images/Guard.png"},
     {"name": "Preist","img":"assets/images/Preist.png"},
     {"name": "Barron","img":"assets/images/Barron.png"},
     {"name": "Hand Maiden","img":"assets/images/Hand_Maiden.png"},
