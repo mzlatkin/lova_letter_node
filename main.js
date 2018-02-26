@@ -83,8 +83,16 @@ function game_model(obj)
 
     self.start_game = function()
     {
-        console.log("called start game");
-        socket.emit("start_game", {"room":obj.current_room_name()});
+        if(obj.players_in_the_room().length>1)
+        {
+            console.log("called start game");
+            socket.emit("start_game", {"room":obj.current_room_name()});
+        }
+        else
+        {
+            alert("must have an opponent");
+        }
+        
     }
 
     self.draw_card = function()
