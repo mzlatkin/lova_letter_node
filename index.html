@@ -200,7 +200,7 @@
                                     <!-- ko if: card_played_this_turn().name == "Guard" -->
                                         <div class="row">
                                             <div class="col-xs-12" data-bind="foreach: players_in_the_room()">
-                                                <!-- ko if: $index() != $parent.player_number() -->
+                                                <!-- ko if: $index() != $parent.player_number()-1 -->
                                                     <div class="col-xs-3" data-bind="click: function(){choose_player($data)}, css: { turn_background: (name == $parent.player_chosen())} ">
                                                         <span data-bind="text: name"></span>
                                                     </div>
