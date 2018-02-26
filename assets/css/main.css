@@ -38,8 +38,21 @@ body {
     background-color: green;
     border: solid blue 1px;
     height: 33%;
+    overflow: hidden;
 }
 
 .play-space{
     height: 100%;
+}
+
+.card-format{
+    width: 100%;
+    max-width: 200px;
+}
+.card-wrapper{
+    height:50px;
+}
+
+.button-format{
+    position: absolute;
 }
