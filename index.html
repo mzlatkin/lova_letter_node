@@ -78,6 +78,12 @@
                         </div>
                     </div>
                     <!-- ko if: card_in_hand() != "" -->
+                        <!-- ko if: obj.player_number() == 1 -->
+                            <span>you are player 1</span>
+                        <!-- /ko -->
+                        <!-- ko if: obj.player_number() == 2 -->
+                            <span>you are player 2</span>
+                        <!-- /ko -->
                         <div class"row">
                             <div class="col-xs-6 col-xs-offset-3 player-space">
                                 <div data-bind="foreach: players_in_the_room()">
