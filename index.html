@@ -78,10 +78,11 @@
                         </div>
                     </div>
                     <!-- ko if: card_in_hand() != "" -->
-                        <!-- ko if: obj.player_number() == 1 -->
+                        <span data-bind="text: player_number"></span>
+                        <!-- ko if: player_number() == 1 -->
                             <span>you are player 1</span>
                         <!-- /ko -->
-                        <!-- ko if: obj.player_number() == 2 -->
+                        <!-- ko if: player_number() == 2 -->
                             <span>you are player 2</span>
                         <!-- /ko -->
                         <div class"row">
