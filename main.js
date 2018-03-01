@@ -34,25 +34,36 @@ function game_model(obj)
     });
 
     socket.on("game_update", function(data) {
-        obj.players_in_the_room(data["people"]);
-        console.log(obj.players_in_the_room());
-        if(obj.player_number() == "")
-        {
-            obj.joined(true);
-        	obj.player_number(data["people"].length);
-        }
-        obj.current_player(data["people"][(data["turn"]-1)]["name"]);
-
-        if (obj.player_number() == data["turn"])
-        {
-        	obj.your_turn(true);
-            if (data["people"][(data["turn"]-1)]["eliminated"] == true){
-                end_turn();
+        if(data["people"] != undefined)
+            {
+            obj.players_in_the_room(data["people"]);
+            console.log(obj.players_in_the_room());
+            if(obj.player_number() == "")
+            {
+                obj.joined(true);
+            	obj.player_number(data["people"].length);
             }
+            obj.current_player(data["people"][(data["turn"]-1)]["name"]);
+
+            if (obj.player_number() == data["turn"])
+            {
+            	obj.your_turn(true);
+                if (data["people"][(data["turn"]-1)]["eliminated"] == true){
+                    end_turn();
+                }
+            }
+            else
+            {
+            	obj.your_turn(false);
+            }
+            obj.card_in_hand(data["people"][obj.player_number()-1]["card_in_hand"])
         }
-        else
+        if(data["update_message"] != undefined)
         {
-        	obj.your_turn(false);
+            // $("#alertModal").modal()
+            // alert(data["update"])
+            console.log("------");
+            console.log(data);
         }
     });
 
