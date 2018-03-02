@@ -18,6 +18,8 @@ function game_model(obj)
     obj.player_chosen = ko.observable("");
     obj.card_chosen = ko.observable("")
 
+    obj.alert_data = ko.observable();
+
     obj.card_list = ko.observableArray([
     {"name": "Preist","img":"assets/images/Preist.png"},
     {"name": "Barron","img":"assets/images/Barron.png"},
@@ -60,10 +62,13 @@ function game_model(obj)
         }
         if(data["update_message"] != undefined)
         {
-            // $("#alertModal").modal()
-            // alert(data["update"])
-            console.log("------");
-            console.log(data);
+            obj.alert_data(data);
+            console.log(obj.alert_data());
+            $("#alertModal").modal();
+            console.log(obj.alert_data()["card_played"])
+            console.log(obj.alert_data()["card_played_by"])
+            console.log(obj.alert_data()["card_guessed"])
+            console.log(obj.alert_data()["card_played_at"])
         }
     });
 
